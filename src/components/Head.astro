@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta
+  property="og:url"
+  content={`https://www.thefuzztones.net${Astro.url.pathname}`}
+/>
+
+<meta name="twitter:card" content="summary_large_image" />
+
+<link
+  rel="canonical"
+  href={`https://www.thefuzztones.net${Astro.url.pathname}`}
+/>

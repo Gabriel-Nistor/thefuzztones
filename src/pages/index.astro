@@ -1,17 +1,56 @@
 ---
-
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout
+  title="The Fuzztones | Official Website"
+  description="Official website of The Fuzztones. Tour dates, music, merch, media, and official links."
+>
+  <main>
+    <section class="hero">
+      <h1>The Fuzztones</h1>
+      <p class="hero-sub">Official website</p>
+
+      <div class="hero-actions">
+        <a href="/tour">Tour</a>
+        <a href="/music">Music</a>
+        <a href="/merch">Merch</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Latest</h2>
+      <p>News, featured releases, and current updates will appear here.</p>
+    </section>
+
+    <section>
+      <h2>Tour</h2>
+      <p>See upcoming live dates and appearances.</p>
+      <p><a href="/tour">View tour dates</a></p>
+    </section>
+
+    <section>
+      <h2>Music</h2>
+      <p>Explore albums, singles, and the wider discography.</p>
+      <p><a href="/music">Explore music</a></p>
+    </section>
+
+    <section>
+      <h2>Merch</h2>
+      <p>Find official merchandise, records, and other items.</p>
+      <p><a href="/merch">Visit merch</a></p>
+    </section>
+
+    <section>
+      <h2>Media</h2>
+      <p>Browse videos, photos, and visual material.</p>
+      <p><a href="/media">Open media</a></p>
+    </section>
+
+    <section>
+      <h2>Links</h2>
+      <p>Bandcamp, official stores, streaming platforms, and more.</p>
+      <p><a href="/links">See all links</a></p>
+    </section>
+  </main>
+</MainLayout>
