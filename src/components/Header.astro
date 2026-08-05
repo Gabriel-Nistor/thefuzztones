@@ -1,12 +1,77 @@
-<header>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/tour">Tour</a>
-    <a href="/music">Music</a>
-    <a href="/merch">Merch</a>
-    <a href="/media">Media</a>
-    <a href="/links">Links</a>
-    <a href="/contact">Contact</a>
+---
+const navItems = [
+  { label: 'Tour', href: '/tour' },
+  { label: 'Music', href: '/music' },
+  { label: 'Media', href: '/media' },
+  { label: 'History', href: '/about' },
+  { label: 'Merch', href: '/merch' },
+  { label: 'Links', href: '/links' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <nav
+      id="primary-navigation"
+      class="site-header__nav"
+      aria-label="Primary navigation"
+    >
+      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <button
+      class="site-header__toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-navigation"
+    class="site-header__mobile-nav"
+    aria-label="Mobile navigation"
+    hidden
+  >
+    {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
   </nav>
 </header>
+
+<script>
+  const toggle = document.querySelector('.site-header__toggle');
+  const mobileNavigation = document.querySelector('.site-header__mobile-nav');
+
+  if (
+    toggle instanceof HTMLButtonElement &&
+    mobileNavigation instanceof HTMLElement
+  ) {
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      const willOpen = !isOpen;
+
+      toggle.setAttribute('aria-expanded', String(willOpen));
+      toggle.setAttribute(
+        'aria-label',
+        willOpen ? 'Close navigation menu' : 'Open navigation menu',
+      );
+
+      mobileNavigation.hidden = !willOpen;
+      document.body.classList.toggle('menu-is-open', willOpen);
+    });
+
+    mobileNavigation.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        mobileNavigation.hidden = true;
+        document.body.classList.remove('menu-is-open');
+      });
+    });
+  }
+</script>

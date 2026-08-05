@@ -1,0 +1,77 @@
+.hero {
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 34% 66%;
+
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.75)),
+    url('/assets/images/fuzztones-band.png');
+
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.hero__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  padding-top: 12rem;
+  padding-left: 7rem;
+  padding-right: 3rem;
+}
+
+.hero__right {
+  /* intentionally empty */
+  font-family: var(--font-brand);
+}
+
+.hero__statement {
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: var(--font-brand);
+
+  font-size: clamp(3.4rem, 7.5vw, 7rem);
+
+  line-height: 0.82;
+
+  text-transform: uppercase;
+
+  color: #f5f2ea;
+}
+
+.hero__statement span {
+  display: block;
+}
+
+.hero__intro {
+  margin-top: 1.5rem;
+
+  max-width: 260px;
+
+  font-size: 0.95rem;
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__left {
+    padding: 8rem 2rem 4rem;
+  }
+
+  .hero__statement {
+    font-size: clamp(2.8rem, 16vw, 5rem);
+  }
+}
