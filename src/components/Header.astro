@@ -1,5 +1,6 @@
 ---
 const navItems = [
+  { label: 'Home', href: '/' },
   { label: 'Tour', href: '/tour' },
   { label: 'Music', href: '/music' },
   { label: 'Media', href: '/media' },
@@ -8,6 +9,8 @@ const navItems = [
   { label: 'Links', href: '/links' },
   { label: 'Contact', href: '/contact' },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header">
@@ -17,7 +20,18 @@ const navItems = [
       class="site-header__nav"
       aria-label="Primary navigation"
     >
-      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={{
+              active: currentPath === item.href,
+            }}
+          >
+            {item.label}
+          </a>
+        ))
+      }
     </nav>
 
     <button
@@ -39,7 +53,18 @@ const navItems = [
     aria-label="Mobile navigation"
     hidden
   >
-    {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    {
+      navItems.map((item) => (
+        <a
+          href={item.href}
+          class:list={{
+            active: currentPath === item.href,
+          }}
+        >
+          {item.label}
+        </a>
+      ))
+    }
   </nav>
 </header>
 

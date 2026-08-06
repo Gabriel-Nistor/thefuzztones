@@ -42,6 +42,31 @@
   color: var(--color-accent);
 }
 
+.site-header__nav a,
+.site-header__mobile-nav a {
+  position: relative;
+  opacity: 0.68;
+}
+
+.site-header__nav a:hover,
+.site-header__nav a:focus-visible,
+.site-header__mobile-nav a:hover,
+.site-header__mobile-nav a:focus-visible,
+.site-header__nav a.active,
+.site-header__mobile-nav a.active {
+  opacity: 1;
+}
+
+.site-header__nav a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.45rem;
+  height: 2px;
+  background: var(--color-text);
+}
+
 /* Hamburger */
 
 .site-header__toggle {
@@ -98,9 +123,9 @@
 }
 
 .site-header__mobile-nav a {
-  padding: 0.85rem 1rem;
+  padding: 1rem 1rem;
 
-  font-size: 0.82rem;
+  font-size: 1rem;
   text-align: right;
 
   opacity: 0.75;
