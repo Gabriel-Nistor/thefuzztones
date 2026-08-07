@@ -7,7 +7,9 @@
 /* Hero entrance */
 
 .hero__logo-link {
-  animation: heroLogoIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+  animation:
+    heroLogoIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both,
+    heroLogoFlicker 420ms steps(1, end) 1050ms 1 normal none;
 }
 
 .hero__media {
@@ -102,6 +104,37 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes heroLogoFlicker {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: none;
+  }
+
+  18% {
+    opacity: 0.72;
+    transform: translateX(-1px) scale(1.003);
+    filter: contrast(1.08);
+  }
+
+  25% {
+    opacity: 1;
+    transform: translateX(2px) scale(1);
+  }
+
+  33% {
+    opacity: 0.84;
+    transform: translateX(-1px) scale(0.998);
+  }
+
+  42% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: none;
   }
 }
 
