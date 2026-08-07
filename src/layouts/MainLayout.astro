@@ -2,8 +2,8 @@
 import '../styles/global.css';
 
 import Head from '../components/Head.astro';
-
 import Header from '../components/Header.astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -16,14 +16,60 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="site-loading">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="preload"
+      href="/assets/fonts/GreenFuzz.otf"
+      as="font"
+      type="font/otf"
+      crossorigin
+    />
+
+    <style is:inline>
+      html {
+        background: #050505;
+      }
+
+      html.site-loading body {
+        opacity: 0;
+      }
+
+      body {
+        transition: opacity 240ms ease;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        body {
+          transition: none;
+        }
+      }
+    </style>
+
+    <noscript>
+      <style>
+        html.site-loading body {
+          opacity: 1;
+        }
+      </style>
+    </noscript>
+
     <Head title={title} description={description} />
   </head>
+
   <body>
     <Header />
     <slot />
+
+    <script is:inline>
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.documentElement.classList.remove('site-loading');
+        });
+      });
+    </script>
   </body>
 </html>

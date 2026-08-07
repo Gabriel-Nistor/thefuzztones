@@ -1,77 +1,162 @@
 .hero {
-  min-height: 100vh;
+  width: min(calc(100% - 3rem), var(--container-width));
+  min-height: 100svh;
+  margin-inline: auto;
+  padding: clamp(6.5rem, 10vh, 9rem) 0 clamp(1.5rem, 3vh, 2.5rem);
 
   display: grid;
-  grid-template-columns: 34% 66%;
+  grid-template-columns: minmax(15rem, 0.65fr) minmax(0, 1.7fr);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'logo media'
+    'statement media'
+    'description description';
+  column-gap: clamp(1rem, 3vw, 3rem);
 
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.75)),
-    url('/assets/images/fuzztones-band.png');
-
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
+  background: var(--color-bg);
 }
 
-.hero__left {
+/* Logo */
+
+.hero__logo-link {
+  grid-area: logo;
+  align-self: start;
+
+  width: clamp(13rem, 22vw, 21rem);
+  max-width: 100%;
+
+  display: block;
+  text-decoration: none;
+}
+
+.hero__logo {
+  width: 100%;
+  height: auto;
+}
+
+.hero__logo-link:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 0.5rem;
+}
+
+/* Band photograph */
+
+.hero__media {
+  grid-area: media;
+
+  min-width: 0;
+  min-height: 0;
+
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
-  padding-top: 12rem;
-  padding-left: 7rem;
-  padding-right: 3rem;
+  align-items: center;
+  justify-content: center;
 }
 
-.hero__right {
-  /* intentionally empty */
-  font-family: var(--font-brand);
+.hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100svh - 8rem);
+
+  object-fit: contain;
+  object-position: center;
 }
+/* Main statement */
 
 .hero__statement {
+  grid-area: statement;
+  align-self: center;
+
   margin: 0;
+  padding-right: clamp(1rem, 3vw, 3rem);
 
   display: flex;
   flex-direction: column;
 
   font-family: var(--font-brand);
-
-  font-size: clamp(3.4rem, 7.5vw, 7rem);
-
+  font-size: clamp(3.4rem, 6.5vw, 6.75rem);
+  font-weight: normal;
   line-height: 0.82;
+  letter-spacing: 0.01em;
 
+  color: var(--color-text);
   text-transform: uppercase;
-
-  color: #f5f2ea;
 }
 
 .hero__statement span {
   display: block;
 }
 
-.hero__intro {
-  margin-top: 1.5rem;
+/* Bottom description */
 
-  max-width: 260px;
+.hero__description {
+  grid-area: description;
 
-  font-size: 0.95rem;
-  line-height: 1.7;
+  width: 100%;
+  max-width: none;
+  margin: clamp(1.5rem, 3vh, 2.5rem) 0 0;
+  padding-top: 1.25rem;
 
-  color: rgba(255, 255, 255, 0.75);
+  border-top: 1px solid var(--color-border);
 
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
   letter-spacing: 0.04em;
 }
 
-@media (max-width: 900px) {
+/* Mobile */
+
+@media (max-width: 800px) {
   .hero {
+    width: min(calc(100% - 2rem), var(--container-width));
+    min-height: auto;
+    padding: 6rem 0 2rem;
+
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'logo'
+      'media'
+      'statement'
+      'description';
+    row-gap: clamp(1.75rem, 6vw, 2.75rem);
   }
 
-  .hero__left {
-    padding: 8rem 2rem 4rem;
+  .hero__logo-link {
+    justify-self: center;
+
+    width: min(72vw, 20rem);
+  }
+
+  .hero__media {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .hero__image {
+    object-position: center top;
   }
 
   .hero__statement {
-    font-size: clamp(2.8rem, 16vw, 5rem);
+    align-self: auto;
+    justify-self: center;
+
+    width: 100%;
+    padding-right: 0;
+
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.18em;
+
+    font-size: clamp(1.65rem, 8.8vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .hero__description {
+    margin: 0;
   }
 }

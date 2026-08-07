@@ -7,19 +7,36 @@ import MainLayout from '../layouts/MainLayout.astro';
   description="Official website of The Fuzztones. Tour dates, music, merch, media, and official links."
 >
   <main>
-    <section class="hero">
-      <div class="hero__left">
-        <h1 class="hero__statement">
-          <span>IN</span>
-          <span>FUZZ</span>
-          <span>WE</span>
-          <span>TRUST</span>
-        </h1>
+    <section class="hero" aria-labelledby="hero-title">
+      <a href="/" class="hero__logo-link">
+        <img
+          src="/assets/logos/fuzztones-logo.png"
+          alt="The Fuzztones"
+          class="hero__logo"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
 
-        <p class="hero__intro">Official website of The Fuzztones.</p>
+      <div class="hero__media">
+        <img
+          src="/assets/images/fuzztones-band-hero.png"
+          alt="The Fuzztones band"
+          class="hero__image"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
       </div>
 
-      <div class="hero__right"></div>
+      <h1 id="hero-title" class="hero__statement">
+        <span>IN</span>
+        <span>FUZZ</span>
+        <span>WE</span>
+        <span>TRUST</span>
+      </h1>
+
+      <p class="hero__description">Official website of The Fuzztones.</p>
     </section>
 
     <section>
