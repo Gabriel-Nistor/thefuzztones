@@ -1,0 +1,287 @@
+/* =========================================================
+   HOME CARDS
+   ========================================================= */
+
+.home-cards {
+  width: min(calc(100% - 3rem), var(--container-width));
+  margin-inline: auto;
+  padding: clamp(4rem, 8vw, 7rem) 0;
+}
+
+.home-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* =========================================================
+   CARD BASE
+   ========================================================= */
+
+.home-card {
+  position: relative;
+  isolation: isolate;
+
+  min-height: clamp(24rem, 38vw, 34rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  color: var(--color-text);
+  background: #0b0b0b;
+
+  border: 1px solid var(--color-border);
+
+  text-decoration: none;
+
+  transition:
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 350ms ease;
+}
+
+/* Background image layer */
+
+.home-card::before {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 500ms ease;
+}
+
+/* Dark readability layer */
+
+.home-card::after {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.16) 0%,
+    rgba(0, 0, 0, 0.2) 35%,
+    rgba(0, 0, 0, 0.82) 100%
+  );
+
+  transition: background 400ms ease;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.home-card__label {
+  align-self: flex-start;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.home-card__label,
+.home-card__action {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.home-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.home-card__title {
+  max-width: 9ch;
+  margin: 0;
+
+  font-family: var(--font-brand);
+  font-size: clamp(2.8rem, 5.3vw, 5.5rem);
+  font-weight: normal;
+  line-height: 0.92;
+
+  color: var(--color-text);
+  text-transform: uppercase;
+
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 0 12px rgba(0, 0, 0, 0.55);
+}
+
+.home-card__action {
+  font-size: 0.78rem;
+  line-height: 1;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.7);
+
+  transition:
+    color 250ms ease,
+    transform 250ms ease;
+}
+
+/* =========================================================
+   LATEST NEWS
+   ========================================================= */
+
+.home-card--news::before {
+  background-image:
+    linear-gradient(rgba(25, 0, 0, 0.12), rgba(25, 0, 0, 0.12)),
+    url('/assets/images/cards/news-halloween-berlin.jpg');
+
+  background-position: center;
+}
+
+/* =========================================================
+   TOUR
+   ========================================================= */
+
+.home-card--tour::before {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)),
+    url('/assets/images/cards/tour-live.jpg');
+
+  background-position: center;
+}
+
+/* =========================================================
+   MUSIC
+   ========================================================= */
+
+.home-card--music {
+  background: radial-gradient(
+    circle at 75% 45%,
+    #231f1b 0%,
+    #11100e 38%,
+    #050505 76%
+  );
+}
+
+.home-card--music::before {
+  inset: 5%;
+
+  background-image: url('/assets/images/cards/music-cover.png');
+  background-size: contain;
+  background-position: center;
+}
+
+.home-card--music::after {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.55) 40%,
+    rgba(0, 0, 0, 0.08) 80%
+  );
+}
+
+/* =========================================================
+   HISTORY
+   ========================================================= */
+
+.home-card--history::before {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url('/assets/images/cards/history-band.jpg');
+  background-position: center top;
+}
+
+.home-card--history::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.28) 40%,
+    rgba(0, 0, 0, 0.88) 100%
+  );
+}
+
+/* =========================================================
+   DESKTOP HOVER
+   ========================================================= */
+
+@media (hover: hover) {
+  .home-card:hover,
+  .home-card:focus-visible {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .home-card:hover::before,
+  .home-card:focus-visible::before {
+    transform: scale(1.035);
+    filter: contrast(1.04);
+  }
+
+  .home-card--music:hover::before,
+  .home-card--music:focus-visible::before {
+    transform: scale(1.06) rotate(1.5deg);
+  }
+
+  .home-card:hover .home-card__action,
+  .home-card:focus-visible .home-card__action {
+    color: #fff;
+    transform: translateX(5px);
+  }
+}
+
+.home-card:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .home-cards {
+    width: min(calc(100% - 2rem), var(--container-width));
+    padding: 3rem 0;
+  }
+
+  .home-cards__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .home-card {
+    min-height: clamp(19rem, 95vw, 26rem);
+    padding: 1.5rem;
+  }
+
+  .home-card__title {
+    font-size: clamp(2.7rem, 13vw, 4.6rem);
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .home-card,
+  .home-card::before,
+  .home-card::after,
+  .home-card__action {
+    transition: none;
+  }
+}

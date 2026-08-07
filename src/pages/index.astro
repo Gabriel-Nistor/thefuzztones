@@ -39,39 +39,170 @@ import MainLayout from '../layouts/MainLayout.astro';
       <p class="hero__description">Official website of The Fuzztones.</p>
     </section>
 
-    <section>
-      <h2>Latest</h2>
-      <p>News, featured releases, and current updates will appear here.</p>
+    <section class="home-cards" aria-label="Featured sections">
+      <div class="home-cards__grid">
+        <a href="/#latest-news" class="home-card home-card--news">
+          <span class="home-card__label">Latest News</span>
+
+          <div class="home-card__content">
+            <h2 class="home-card__title">Halloween Show in Berlin</h2>
+
+            <span class="home-card__action"> Read latest news → </span>
+          </div>
+        </a>
+
+        <a href="/#tour" class="home-card home-card--tour">
+          <span class="home-card__label">Tour</span>
+
+          <div class="home-card__content">
+            <h2 class="home-card__title">Live & Loud</h2>
+
+            <span class="home-card__action"> See upcoming shows → </span>
+          </div>
+        </a>
+
+        <a href="/music" class="home-card home-card--music">
+          <span class="home-card__label">Music</span>
+
+          <div class="home-card__content">
+            <h2 class="home-card__title">Discography</h2>
+
+            <span class="home-card__action"> Explore the music → </span>
+          </div>
+        </a>
+
+        <a href="/about" class="home-card home-card--history">
+          <span class="home-card__label">History</span>
+
+          <div class="home-card__content">
+            <h2 class="home-card__title">The Story Behind the Fuzz</h2>
+
+            <span class="home-card__action"> Read the story → </span>
+          </div>
+        </a>
+      </div>
     </section>
 
-    <section>
-      <h2>Tour</h2>
-      <p>See upcoming live dates and appearances.</p>
-      <p><a href="/tour">View tour dates</a></p>
+    <section
+      id="latest-news"
+      class="home-placeholder home-placeholder--news"
+      aria-labelledby="latest-news-title"
+    >
+      <h2 id="latest-news-title">Latest News</h2>
+
+      <div class="home-placeholder__box">News image / content will go here</div>
     </section>
 
-    <section>
-      <h2>Music</h2>
-      <p>Explore albums, singles, and the wider discography.</p>
-      <p><a href="/music">Explore music</a></p>
+    <section
+      id="tour"
+      class="home-placeholder home-placeholder--tour"
+      aria-labelledby="tour-title"
+    >
+      <h2 id="tour-title">On Tour</h2>
+
+      <div class="home-placeholder__box">Tour dates will go here</div>
+
+      <a href="/tour" class="home-placeholder__link"> View full Tour page → </a>
     </section>
 
-    <section>
-      <h2>Merch</h2>
-      <p>Find official merchandise, records, and other items.</p>
-      <p><a href="/merch">Visit merch</a></p>
-    </section>
+    <style>
+      .home-explore,
+      .home-placeholder {
+        width: min(calc(100% - 3rem), var(--container-width));
+        margin-inline: auto;
+        padding-block: 5rem;
+      }
 
-    <section>
-      <h2>Media</h2>
-      <p>Browse videos, photos, and visual material.</p>
-      <p><a href="/media">Open media</a></p>
-    </section>
+      .home-explore__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
 
-    <section>
-      <h2>Links</h2>
-      <p>Bandcamp, official stores, streaming platforms, and more.</p>
-      <p><a href="/links">See all links</a></p>
-    </section>
+      .home-explore__card {
+        min-height: 260px;
+
+        display: flex;
+        align-items: flex-end;
+
+        padding: 2rem;
+
+        color: white;
+        font-size: clamp(2rem, 4vw, 4rem);
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .home-explore__card--news {
+        background: #7a1e1e;
+      }
+
+      .home-explore__card--tour {
+        background: #244f69;
+      }
+
+      .home-explore__card--music {
+        background: #4b3d73;
+      }
+
+      .home-explore__card--merch {
+        background: #536b35;
+      }
+
+      .home-placeholder__box {
+        min-height: 480px;
+
+        display: grid;
+        place-items: center;
+
+        margin-top: 2rem;
+        padding: 2rem;
+
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      .home-placeholder--news .home-placeholder__box {
+        background: #704d21;
+      }
+
+      .home-placeholder--tour .home-placeholder__box {
+        background: #315b50;
+      }
+
+      .home-placeholder__link {
+        display: inline-block;
+        margin-top: 1.5rem;
+      }
+
+      #latest-news,
+      #tour {
+        scroll-margin-top: 2rem;
+      }
+
+      @media (max-width: 800px) {
+        .home-explore,
+        .home-placeholder {
+          width: min(calc(100% - 2rem), var(--container-width));
+          padding-block: 3rem;
+        }
+
+        .home-explore__grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .home-explore__card {
+          min-height: 180px;
+          padding: 1.5rem;
+
+          font-size: clamp(2rem, 11vw, 3.5rem);
+        }
+
+        .home-placeholder__box {
+          min-height: 320px;
+        }
+      }
+    </style>
   </main>
 </MainLayout>
