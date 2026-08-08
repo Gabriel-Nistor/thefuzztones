@@ -1,0 +1,9 @@
+/* MEDIA PAGE */
+
+.page-header--media .page-title {
+  font-size: clamp(3.8rem, 8vw, 7rem);
+}
+
+.page-header--media .page-header__rule::before {
+  display: none;
+}

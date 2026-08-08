@@ -131,3 +131,27 @@ small {
     font-size: clamp(3.8rem, 19vw, 6rem);
   }
 }
+
+/* COMING SOON STYLE - TO BE DELETED */
+.coming-soon {
+  width: min(calc(100% - 3rem), var(--container-width));
+  margin: 3rem 1rem;
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+
+  font-family: var(--font-brand);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: normal;
+  line-height: 1;
+  color: var(--color-text);
+
+  text-transform: uppercase;
+}
+
+@media (max-width: 800px) {
+  .coming-soon {
+    width: min(calc(100% - 2rem), var(--container-width));
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+}
+
+/* END OF COMING SOON STYLE */

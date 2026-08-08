@@ -1,0 +1,9 @@
+/* LINKS PAGE */
+
+.page-header--links .page-title {
+  font-size: clamp(3.8rem, 8vw, 7rem);
+}
+
+.page-header--links .page-header__rule::before {
+  display: none;
+}

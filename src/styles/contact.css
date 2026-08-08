@@ -1,0 +1,9 @@
+/* CONTACT PAGE */
+
+.page-header--contact .page-title {
+  font-size: clamp(3.8rem, 8vw, 7rem);
+}
+
+.page-header--contact .page-header__rule::before {
+  display: none;
+}

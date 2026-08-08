@@ -1,0 +1,9 @@
+/* MERCH PAGE */
+
+.page-header--merch .page-title {
+  font-size: clamp(3.8rem, 8vw, 7rem);
+}
+
+.page-header--merch .page-header__rule::before {
+  display: none;
+}
