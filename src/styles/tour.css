@@ -1,0 +1,257 @@
+/* =========================================================
+   TOUR PAGE
+   ========================================================= */
+
+.tour-page {
+  width: min(calc(100% - 3rem), var(--container-width));
+  margin-inline: auto;
+  padding: 0 0 clamp(5rem, 9vw, 8rem);
+}
+
+.page-header--tour .page-title {
+  font-size: clamp(3.8rem, 8vw, 7rem);
+}
+
+.page-header--tour .page-header__rule::before {
+  display: none;
+}
+
+.tour-page .section-title {
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+}
+
+/* =========================================================
+   EVENT
+   ========================================================= */
+
+.tour-event {
+  display: grid;
+  grid-template-columns:
+    minmax(12rem, 0.7fr)
+    minmax(20rem, 1.5fr)
+    auto;
+
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* DATE */
+
+.tour-event__date {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tour-event__day {
+  font-family: var(--font-brand);
+  font-size: clamp(5rem, 8vw, 8rem);
+  font-weight: normal;
+  line-height: 0.78;
+
+  color: var(--color-text);
+}
+
+.tour-event__date-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.tour-event__month,
+.tour-event__year {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tour-event__month {
+  color: var(--color-text);
+}
+
+.tour-event__year {
+  color: var(--color-text-muted);
+}
+
+/* CONTENT */
+
+.tour-event__content {
+  min-width: 0;
+}
+
+.tour-event__type {
+  display: block;
+  margin-bottom: 0.75rem;
+
+  color: var(--color-accent);
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.tour-event__city {
+  margin: 0 0 1rem;
+
+  font-family: var(--font-brand);
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: normal;
+  line-height: 0.9;
+
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+
+.tour-event__venue {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.tour-event__location,
+.tour-event__time {
+  margin: 0.2rem 0 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.tour-event__time {
+  display: block;
+  margin-top: 0.6rem;
+
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ACTIONS */
+
+.tour-event__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  min-width: 12rem;
+}
+
+.tour-event__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 3rem;
+  padding: 0.8rem 1.2rem;
+
+  border: 1px solid var(--color-border);
+
+  color: var(--color-text);
+  background: transparent;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.tour-event__button--primary {
+  background: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* MORE DATES */
+
+.tour-page__more {
+  margin: 1.5rem 0 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 0.8rem;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+@media (hover: hover) {
+  .tour-event__button:hover,
+  .tour-event__button:focus-visible {
+    border-color: var(--color-text);
+    transform: translateY(-2px);
+  }
+
+  .tour-event__button--primary:hover,
+  .tour-event__button--primary:focus-visible {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .tour-page {
+    width: min(calc(100% - 2rem), var(--container-width));
+    padding-bottom: 4rem;
+  }
+
+  .tour-event {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+
+    padding: 2rem 0;
+  }
+
+  .tour-event__day {
+    font-size: clamp(5rem, 24vw, 7rem);
+  }
+
+  .tour-event__city {
+    font-size: clamp(3rem, 14vw, 4.75rem);
+  }
+
+  .tour-event__actions {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .tour-event__button {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-event__button {
+    transition: none;
+  }
+}

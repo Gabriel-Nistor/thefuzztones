@@ -4,10 +4,66 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 <MainLayout
   title="Tour | The Fuzztones"
-  description="Upcoming tour dates and live shows of The Fuzztones."
+  description="The Fuzztones tour dates and live shows. See upcoming concerts, venues, dates and ticket information."
 >
   <main>
-    <h1>Tour</h1>
-    <p>Upcoming shows will appear here.</p>
+    <header class="page-header page-header--tour">
+      <span class="page-header__eyebrow">The Fuzztones</span>
+
+      <h1 class="page-title">Tour</h1>
+
+      <div class="page-header__rule" aria-hidden="true"></div>
+    </header>
+
+    <section class="tour-page" aria-labelledby="upcoming-shows-title">
+      <h2 id="upcoming-shows-title" class="section-title">Upcoming Shows</h2>
+
+      <article class="tour-event">
+        <div class="tour-event__date">
+          <span class="tour-event__day">31</span>
+
+          <div class="tour-event__date-info">
+            <span class="tour-event__month">October</span>
+            <span class="tour-event__year">2026</span>
+          </div>
+        </div>
+
+        <div class="tour-event__content">
+          <span class="tour-event__type"> Halloween Show </span>
+
+          <h3 class="tour-event__city">Berlin, Germany</h3>
+
+          <p class="tour-event__venue">BI NUU</p>
+
+          <p class="tour-event__location">U-Bhf Schlesisches Tor · Berlin</p>
+
+          <time class="tour-event__time" datetime="2026-10-31T21:00">
+            9 PM
+          </time>
+        </div>
+
+        <div class="tour-event__actions">
+          <a
+            href="https://hoochiekoo.us5.list-manage.com/subscribe?u=9b3912f7178474c83082a0ee9&id=b717cc285a"
+            class="tour-event__button tour-event__button--primary"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Get Tickets →
+          </a>
+
+          <a
+            href="https://maps.app.goo.gl/ngtTfRFDAkJsJw9d6"
+            class="tour-event__button"
+            target="_blank"
+            rel="noreferrer"
+          >
+            View Location →
+          </a>
+        </div>
+      </article>
+
+      <p class="tour-page__more">More dates to follow.</p>
+    </section>
   </main>
 </MainLayout>

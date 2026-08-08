@@ -55,3 +55,79 @@ small {
   color: var(--color-text);
   text-transform: uppercase;
 }
+
+/* =========================================================
+   INTERNAL PAGE HEADINGS
+   ========================================================= */
+
+.page-header {
+  width: min(calc(100% - 3rem), var(--container-width));
+  margin-inline: auto;
+
+  padding-top: clamp(9rem, 14vh, 12rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.page-header__eyebrow {
+  display: block;
+  margin-bottom: 1rem;
+
+  color: var(--color-text-muted);
+
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.page-title {
+  margin: 0;
+
+  font-family: var(--font-brand);
+  font-size: clamp(4.5rem, 10vw, 9rem);
+  font-weight: normal;
+
+  line-height: 0.85;
+  letter-spacing: 0;
+
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+
+.page-header__rule {
+  width: 100%;
+  height: 1px;
+
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+
+  background: var(--color-border);
+}
+
+.page-header__rule::before {
+  content: '';
+
+  display: block;
+
+  width: clamp(3rem, 7vw, 6rem);
+  height: 1px;
+
+  background: var(--color-accent);
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+  .page-header {
+    width: min(calc(100% - 2rem), var(--container-width));
+
+    padding-top: 7rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .page-title {
+    font-size: clamp(3.8rem, 19vw, 6rem);
+  }
+}
