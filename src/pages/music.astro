@@ -4,10 +4,46 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 <MainLayout
   title="Music | The Fuzztones"
-  description="Explore the discography of The Fuzztones. Albums, singles, and releases."
+  description="Explore music by The Fuzztones and visit the band's official Bandcamp for albums, releases, streaming and purchases."
 >
   <main>
-    <h1>Music</h1>
-    <p>Discover albums, singles, and the full discography of The Fuzztones.</p>
+    <header class="page-header page-header--music">
+      <span class="page-header__eyebrow">The Fuzztones</span>
+
+      <h1 class="page-title">Music</h1>
+
+      <div class="page-header__rule" aria-hidden="true"></div>
+    </header>
+
+    <section class="music-page" aria-labelledby="music-listen-title">
+      <div class="music-page__intro">
+        <span class="music-page__eyebrow"> Official Bandcamp </span>
+
+        <h2 id="music-listen-title" class="section-title">Listen &amp; Buy</h2>
+
+        <p class="music-page__description">
+          Explore The Fuzztones’ music, releases and recordings on the band's
+          official Bandcamp.
+        </p>
+
+        <a
+          href="https://thefuzztones1.bandcamp.com/"
+          class="music-page__bandcamp-link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Visit Official Bandcamp →
+        </a>
+      </div>
+
+      <div class="music-page__player">
+        <iframe
+          class="music-page__bandcamp-player"
+          src="https://bandcamp.com/EmbeddedPlayer/album=3202576194/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/"
+          seamless
+          title="Lysergic Emanations by The Fuzztones"
+          loading="lazy"></iframe>
+      </div>
+    </section>
   </main>
 </MainLayout>
