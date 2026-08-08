@@ -82,23 +82,97 @@ import MainLayout from '../layouts/MainLayout.astro';
         </a>
       </div>
     </section>
-
+    <!-- Latest news starts here -->
     <section
       id="latest-news"
-      class="home-placeholder home-placeholder--news"
+      class="latest-news"
       aria-labelledby="latest-news-title"
     >
-      <h2 id="latest-news-title">Latest News</h2>
+      <h2 id="latest-news-title" class="section-title">Latest News</h2>
 
-      <div class="home-placeholder__box">News image / content will go here</div>
+      <article class="latest-news__feature">
+        <div class="latest-news__media">
+          <img
+            src="/assets/images/cards/news-halloween-berlin.jpg"
+            alt="The Fuzztones Halloween show in Berlin"
+            class="latest-news__image"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="latest-news__content">
+          <div class="latest-news__details">
+            <time datetime="2026-10-31T21:00"> 31 October 2026 · 9 PM </time>
+
+            <a
+              href="https://maps.app.goo.gl/ngtTfRFDAkJsJw9d6"
+              target="_blank"
+              rel="noreferrer"
+            >
+              BI NUU · U-Bhf Schlesisches Tor · Berlin
+            </a>
+          </div>
+
+          <h3 class="latest-news__headline">
+            The Fuzztones Halloween Show Returns to Berlin
+          </h3>
+
+          <div class="latest-news__copy">
+            <p>
+              After ten years, The Fuzztones’ legendary Halloween show returns
+              to Berlin!
+            </p>
+
+            <p>
+              Expect a night packed with the dark, spooky and twisted sounds of
+              <em> Monster A Go-Go</em>, plenty of surprises, a secret themed
+              band costume and a stage transformed especially for Halloween.
+            </p>
+
+            <p>
+              <strong>
+                One night. One special Halloween set. And plenty we’re not going
+                to reveal just yet.
+              </strong>
+            </p>
+
+            <p>
+              <strong>Come out, come out, whatever you are!</strong>
+            </p>
+          </div>
+
+          <div class="latest-news__actions">
+            <a
+              href="https://hoochiekoo.us5.list-manage.com/subscribe?u=9b3912f7178474c83082a0ee9&id=b717cc285a"
+              class="latest-news__button latest-news__button--primary"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Get Tickets →
+            </a>
+
+            <a
+              href="https://maps.app.goo.gl/ngtTfRFDAkJsJw9d6"
+              class="latest-news__button"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View Location →
+            </a>
+          </div>
+        </div>
+      </article>
     </section>
+
+    <!-- ------------- Latest news ends here ------------- -->
 
     <section
       id="tour"
       class="home-placeholder home-placeholder--tour"
       aria-labelledby="tour-title"
     >
-      <h2 id="tour-title">On Tour</h2>
+      <h2 id="tour-title" class="section-title">On Tour</h2>
 
       <div class="home-placeholder__box">Tour dates will go here</div>
 
