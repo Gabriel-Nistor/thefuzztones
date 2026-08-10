@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thefuzztones.net/sitemap-index.xml
