@@ -16,6 +16,14 @@ const musicGroupSchema = {
     'https://open.spotify.com/artist/64CktFSdicLd9XQzV6gkMg',
   ],
 };
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://thefuzztones.net/#website',
+  name: 'The Fuzztones',
+  url: 'https://thefuzztones.net/',
+};
 ---
 
 <MainLayout
@@ -26,6 +34,9 @@ const musicGroupSchema = {
     type="application/ld+json"
     set:html={JSON.stringify(musicGroupSchema)}
   />
+
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <a href="/" class="hero__logo-link">
