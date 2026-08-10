@@ -4,14 +4,80 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 <MainLayout
   title="Media | The Fuzztones"
-  description="Photos, videos and media from The Fuzztones."
+  description="Photos, videos and official media from The Fuzztones."
 >
   <main>
     <header class="page-header page-header--media">
       <span class="page-header__eyebrow">The Fuzztones</span>
       <h1 class="page-title">Media</h1>
       <div class="page-header__rule" aria-hidden="true"></div>
-      <p class="coming-soon">More shall be revealed... soon!</p>
     </header>
+
+    <section
+      class="media-feature"
+      id="fuzztones-vs-the-world"
+      aria-labelledby="documentary-title"
+    >
+      <div class="media-feature__poster">
+        <img
+          src="/assets/images/media/fuzztones-vs-the-world.png"
+          alt="The Fuzztones vs The World documentary poster"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
+      <div class="media-feature__content">
+        <p class="media-feature__eyebrow">Official Documentary</p>
+
+        <p class="media-feature__tagline">
+          <em>A tale of sex, LSD, and rock n roll</em>
+        </p>
+
+        <h2 id="documentary-title" class="media-feature__title">
+          The Fuzztones vs The World
+        </h2>
+
+        <p>
+          The film chronicles the highs and lows of The Fuzztones across more
+          than four decades of Garage Rock.
+        </p>
+
+        <p>
+          Formed in New York City in 1980, The Fuzztones helped redefine
+          Psychedelic Punk and sparked an exciting new garage rock scene.
+        </p>
+
+        <p class="media-feature__release">
+          DVD release — <strong>November 10, 2026</strong>
+        </p>
+
+        <p class="media-feature__note">
+          Purchase information and further details coming soon.
+        </p>
+
+        <a
+          href="https://www.imdb.com/title/tt33337078/"
+          class="button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View on IMDb
+        </a>
+      </div>
+
+      <div class="media-feature__trailer">
+        <h3>Official Trailer</h3>
+
+        <div class="media-feature__video">
+          <iframe
+            src="https://www.youtube.com/embed/t4nzg-Pcji4"
+            title="The Fuzztones vs The World official trailer"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
   </main>
 </MainLayout>

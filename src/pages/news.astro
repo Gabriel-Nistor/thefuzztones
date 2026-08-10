@@ -1,0 +1,107 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout
+  title="News | The Fuzztones"
+  description="Latest news, releases and announcements from The Fuzztones."
+>
+  <main>
+    <header class="page-header page-header--news">
+      <span class="page-header__eyebrow">The Fuzztones</span>
+      <h1 class="page-title">News</h1>
+      <div class="page-header__rule" aria-hidden="true"></div>
+    </header>
+
+    <section class="news-page">
+      <article class="news-item news-item--featured">
+        <div class="news-item__image">
+          <img
+            src="/assets/images/cards/news-halloween-berlin.jpg"
+            alt="The Fuzztones Halloween show in Berlin"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+
+        <div class="news-item__content">
+          <span class="news-item__label">Featured</span>
+
+          <h2>The Fuzztones — Halloween in Berlin</h2>
+
+          <p class="news-item__date">October 31, 2026</p>
+
+          <p>The Fuzztones return to Berlin for Halloween night at BI NUU.</p>
+
+          <a
+            href="https://hoochiekoo.us5.list-manage.com/subscribe?u=9b3912f7178474c83082a0ee9&id=b717cc285a"
+            class="latest-news__button latest-news__button--primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Tickets
+          </a>
+        </div>
+      </article>
+
+      <article class="news-item" id="fuzztones-vs-the-world">
+        <div class="news-item__image">
+          <img
+            src="/assets/images/cards/news-fuzztones-vs-the-world-dvd.png"
+            alt="The Fuzztones vs The World documentary"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="news-item__content">
+          <span class="news-item__label">New Release</span>
+
+          <p class="news-item__tagline">
+            <em>A tale of sex, LSD, and rock n roll</em>
+          </p>
+
+          <h2>The Fuzztones vs The World — Coming to DVD</h2>
+
+          <p class="news-item__date">November 10, 2026</p>
+
+          <p>
+            <em>The Fuzztones vs The World</em> chronicles the highs and lows of an
+            extraordinary band whose career has spanned more than four decades of
+            Garage Rock.
+          </p>
+
+          <p>
+            Formed in New York City in 1980, The Fuzztones helped redefine
+            Psychedelic Punk and sparked a new garage rock scene, driven by the
+            uncompromising vision of Rudi Protrudi.
+          </p>
+
+          <p>The documentary arrives on DVD November 10, 2026.</p>
+
+          <div class="news-item__actions">
+            <a
+              href="/media#fuzztones-vs-the-world"
+              class="latest-news__button latest-news__button--primary"
+            >
+              More Info + Official Trailer →
+            </a>
+
+            <a
+              href="https://www.imdb.com/title/tt33337078/"
+              class="latest-news__button latest-news__button--primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              IMDb
+            </a>
+          </div>
+
+          <p class="news-item__note">
+            Purchase information and further details coming soon.
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</MainLayout>

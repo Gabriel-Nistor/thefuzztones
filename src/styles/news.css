@@ -1,0 +1,126 @@
+.page-header--news .page-title {
+  font-size: clamp(3.8rem, 8vw, 7rem);
+}
+
+.page-header--news .page-header__rule::before {
+  display: none;
+}
+
+.news-page {
+  width: min(calc(100% - 3rem), var(--container-width));
+  margin-inline: auto;
+  padding-bottom: clamp(5rem, 9vw, 8rem);
+}
+
+.news-item {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.news-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.news-item__image {
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.news-item__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.news-item__content {
+  max-width: 48rem;
+}
+
+.news-item__label {
+  display: inline-block;
+  margin-bottom: 1rem;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.news-item__tagline {
+  margin: 0 0 1rem;
+  color: var(--color-text);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+}
+
+.news-item h2 {
+  margin: 0 0 0.75rem;
+
+  font-family: var(--font-brand);
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-weight: normal;
+  line-height: 0.95;
+  color: var(--color-text);
+}
+
+.news-item__date {
+  margin: 0 0 1.5rem;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.news-item__content
+  > p:not(.news-item__tagline):not(.news-item__date):not(.news-item__note) {
+  margin: 0 0 1.25rem;
+  color: rgba(245, 242, 234, 0.82);
+  line-height: 1.75;
+}
+
+.news-item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.news-item__note {
+  margin: 1.5rem 0 0;
+
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.news-item--featured {
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+@media (max-width: 800px) {
+  .news-page {
+    width: min(calc(100% - 2rem), var(--container-width));
+  }
+
+  .news-item {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .news-item h2 {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+  }
+
+  .news-item__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
