@@ -16,8 +16,40 @@
   display: none;
 }
 
+/* BANDSINTOWN */
+
+.tour-bandsintown {
+  width: min(calc(100% - 3rem), var(--container-width));
+  margin: 0 auto 3rem;
+}
+
+.tour-bandsintown__link {
+  display: inline-block;
+
+  color: var(--color-text);
+
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.35rem;
+
+  transition:
+    color var(--transition),
+    transform var(--transition);
+}
+
 .tour-page .section-title {
-  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: 0.03em;
+}
+
+.tour-event + .section-title {
+  margin-top: 4rem;
 }
 
 /* =========================================================
@@ -180,23 +212,17 @@
   color: var(--color-bg);
 }
 
-/* MORE DATES */
-
-.tour-page__more {
-  margin: 1.5rem 0 0;
-
-  color: var(--color-text-muted);
-
-  font-size: 0.8rem;
-  font-style: italic;
-  letter-spacing: 0.05em;
-}
-
 /* =========================================================
    HOVER
    ========================================================= */
 
 @media (hover: hover) {
+  .tour-bandsintown__link:hover,
+  .tour-bandsintown__link:focus-visible {
+    color: var(--color-accent);
+    transform: translateX(3px);
+  }
+
   .tour-event__button:hover,
   .tour-event__button:focus-visible {
     border-color: var(--color-text);
@@ -219,6 +245,11 @@
   .tour-page {
     width: min(calc(100% - 2rem), var(--container-width));
     padding-bottom: 4rem;
+  }
+
+  .tour-bandsintown {
+    width: min(calc(100% - 2rem), var(--container-width));
+    margin-bottom: 2.5rem;
   }
 
   .tour-event {
