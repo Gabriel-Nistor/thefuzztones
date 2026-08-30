@@ -3,15 +3,65 @@ import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout
-  title="Links | The Fuzztones"
-  description="Official links for The Fuzztones."
+  title="Official Links | The Fuzztones"
+  description="Official links for The Fuzztones. Find the band on Bandcamp, Bandsintown and Instagram."
 >
   <main>
     <header class="page-header page-header--links">
       <span class="page-header__eyebrow">The Fuzztones</span>
-      <h1 class="page-title">Links</h1>
+
+      <h1 class="page-title">Official Links</h1>
+
       <div class="page-header__rule" aria-hidden="true"></div>
-      <p class="coming-soon">More shall be revealed... soon!</p>
     </header>
+
+    <section class="links-page">
+      <p class="links-page__intro">
+        Alright kids, don't be scared… follow us into that strange and
+        mysterious place they call the internet for the latest news, live shows,
+        music and other peculiar happenings.
+      </p>
+
+      <ul class="official-links">
+        <li class="official-links__item">
+          <span class="official-links__name">BandCamp</span>
+
+          <a
+            href="https://thefuzztones1.bandcamp.com/"
+            class="official-links__link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Visit Bandcamp →
+          </a>
+        </li>
+
+        <li class="official-links__item">
+          <span class="official-links__name">BandsInTown</span>
+
+          <a
+            href="https://www.bandsintown.com/a/130036-the-fuzztones"
+            class="official-links__link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Follow on Bandsintown →
+          </a>
+        </li>
+
+        <li class="official-links__item">
+          <span class="official-links__name">Instagram</span>
+
+          <a
+            href="https://www.instagram.com/fuzztonesofficial/"
+            class="official-links__link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Follow on Instagram →
+          </a>
+        </li>
+      </ul>
+    </section>
   </main>
 </MainLayout>

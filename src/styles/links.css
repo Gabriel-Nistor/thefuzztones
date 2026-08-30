@@ -1,4 +1,12 @@
-/* LINKS PAGE */
+/* =========================================================
+   LINKS PAGE
+   ========================================================= */
+
+.links-page {
+  width: min(calc(100% - 3rem), var(--container-width));
+  margin-inline: auto;
+  padding: 0 0 clamp(5rem, 9vw, 8rem);
+}
 
 .page-header--links .page-title {
   font-size: clamp(3.8rem, 8vw, 7rem);
@@ -6,4 +14,108 @@
 
 .page-header--links .page-header__rule::before {
   display: none;
+}
+
+/* INTRO */
+
+.links-page__intro {
+  max-width: 60rem;
+  margin: 0 0 clamp(3rem, 6vw, 5rem);
+
+  color: var(--color-text);
+
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* OFFICIAL LINKS */
+
+.official-links {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.official-links__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  padding: clamp(1.8rem, 4vw, 2.8rem) 0;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.official-links__name {
+  font-family: var(--font-brand);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: normal;
+  line-height: 1;
+
+  color: var(--color-fuzz-green);
+  text-transform: uppercase;
+}
+
+.official-links__link {
+  color: var(--color-text);
+
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    color var(--transition),
+    transform var(--transition);
+}
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+@media (hover: hover) {
+  .official-links__link:hover,
+  .official-links__link:focus-visible {
+    color: var(--color-accent);
+    transform: translateX(3px);
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .links-page {
+    width: min(calc(100% - 2rem), var(--container-width));
+    padding-bottom: 4rem;
+  }
+
+  .official-links__item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .official-links__name {
+    font-size: clamp(2.4rem, 12vw, 3.5rem);
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .official-links__link {
+    transition: none;
+  }
 }
