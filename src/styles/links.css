@@ -16,7 +16,9 @@
   display: none;
 }
 
-/* INTRO */
+/* =========================================================
+   INTRO
+   ========================================================= */
 
 .links-page__intro {
   max-width: 60rem;
@@ -30,7 +32,9 @@
   letter-spacing: 0.01em;
 }
 
-/* OFFICIAL LINKS */
+/* =========================================================
+   OFFICIAL LINKS
+   ========================================================= */
 
 .official-links {
   margin: 0;
@@ -42,14 +46,24 @@
 }
 
 .official-links__item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.official-links__link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
 
+  width: 100%;
   padding: clamp(1.8rem, 4vw, 2.8rem) 0;
 
-  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-decoration: none;
+
+  transition:
+    color var(--transition),
+    background-color var(--transition);
 }
 
 .official-links__name {
@@ -60,21 +74,16 @@
 
   color: var(--color-fuzz-green);
   text-transform: uppercase;
+
+  transition: color var(--transition);
 }
 
-.official-links__link {
-  color: var(--color-text);
-
+.official-links__action {
   font-size: 0.8rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.1em;
-  text-decoration: none;
   text-transform: uppercase;
-
-  transition:
-    color var(--transition),
-    transform var(--transition);
 }
 
 /* =========================================================
@@ -85,7 +94,11 @@
   .official-links__link:hover,
   .official-links__link:focus-visible {
     color: var(--color-accent);
-    transform: translateX(3px);
+  }
+
+  .official-links__link:hover .official-links__name,
+  .official-links__link:focus-visible .official-links__name {
+    color: var(--color-accent);
   }
 }
 
@@ -99,14 +112,20 @@
     padding-bottom: 4rem;
   }
 
-  .official-links__item {
+  .official-links__link {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+
+    padding: 2rem 0;
   }
 
   .official-links__name {
     font-size: clamp(2.4rem, 12vw, 3.5rem);
+  }
+
+  .official-links__action {
+    font-size: 0.75rem;
   }
 }
 
@@ -115,7 +134,8 @@
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .official-links__link {
+  .official-links__link,
+  .official-links__name {
     transition: none;
   }
 }
