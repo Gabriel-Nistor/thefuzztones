@@ -1,4 +1,6 @@
-/* CONTACT PAGE */
+/* =========================================================
+   CONTACT PAGE
+   ========================================================= */
 
 .page-header--contact .page-title {
   font-size: clamp(3.8rem, 8vw, 7rem);
@@ -6,4 +8,134 @@
 
 .page-header--contact .page-header__rule::before {
   display: none;
+}
+
+/* =========================================================
+   CONTACT CONTENT
+   ========================================================= */
+
+.contact-page {
+  width: min(calc(100% - 3rem), var(--container-width));
+  margin-inline: auto;
+  padding: 0 0 clamp(5rem, 9vw, 8rem);
+}
+
+.contact-page__intro {
+  margin: 0 0 1.5rem;
+
+  font-family: var(--font-brand);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: normal;
+  line-height: 1;
+
+  color: var(--color-fuzz-green);
+  text-transform: uppercase;
+}
+
+.contact-page__copy {
+  max-width: 48rem;
+  margin: 0 0 2rem;
+
+  color: var(--color-text);
+
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   EMAIL ADDRESS
+   ========================================================= */
+
+.contact-page__email {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 2rem;
+
+  color: var(--color-text);
+
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.4;
+
+  text-decoration: none;
+  overflow-wrap: anywhere;
+
+  transition: color var(--transition);
+}
+
+/* =========================================================
+   EMAIL BUTTON
+   ========================================================= */
+
+.contact-page__button {
+  display: inline-block;
+
+  padding: 0.9rem 1.2rem;
+
+  border: 1px solid var(--color-border);
+
+  color: var(--color-text);
+  background: transparent;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    color var(--transition),
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+@media (hover: hover) {
+  .contact-page__email:hover,
+  .contact-page__email:focus-visible {
+    color: var(--color-fuzz-green);
+  }
+
+  .contact-page__button:hover,
+  .contact-page__button:focus-visible {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .contact-page {
+    width: min(calc(100% - 2rem), var(--container-width));
+    padding-bottom: 4rem;
+  }
+
+  .contact-page__intro {
+    font-size: clamp(2.6rem, 12vw, 3.5rem);
+  }
+
+  .contact-page__email {
+    font-size: 1rem;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-page__email,
+  .contact-page__button {
+    transition: none;
+  }
 }

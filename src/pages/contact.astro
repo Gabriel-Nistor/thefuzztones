@@ -4,14 +4,37 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 <MainLayout
   title="Contact | The Fuzztones"
-  description="Contact The Fuzztones."
+  description="Contact The Fuzztones for bookings, press and general enquiries."
 >
   <main>
     <header class="page-header page-header--contact">
       <span class="page-header__eyebrow">The Fuzztones</span>
+
       <h1 class="page-title">Contact</h1>
+
       <div class="page-header__rule" aria-hidden="true"></div>
-      <p class="coming-soon">More shall be revealed... soon!</p>
     </header>
+
+    <section class="contact-page">
+      <p class="contact-page__intro">Want to get in touch?</p>
+
+      <p class="contact-page__copy">
+        For bookings, press, general enquiries and other strange business:
+      </p>
+
+      <a
+        href="mailto:gurus.of.garage.grunge@gmail.com"
+        class="contact-page__email"
+      >
+        gurus.of.garage.grunge@gmail.com
+      </a>
+
+      <a
+        href="mailto:gurus.of.garage.grunge@gmail.com"
+        class="contact-page__button"
+      >
+        Email The Fuzztones →
+      </a>
+    </section>
   </main>
 </MainLayout>
