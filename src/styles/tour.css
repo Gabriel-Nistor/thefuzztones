@@ -308,3 +308,52 @@
     transition: none;
   }
 }
+
+/* =========================================================
+   PREVIOUS TOURS / SHOWS
+   ========================================================= */
+
+.tour-history {
+  max-width: 55rem;
+  margin: 2.5rem 0 4rem;
+  padding-left: 1.5rem;
+
+  border-left: 3px solid var(--color-fuzz-green);
+}
+
+.tour-history__intro {
+  margin: 0 0 1.5rem;
+
+  color: var(--color-text);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.tour-history__note {
+  margin: 0;
+
+  color: var(--color-fuzz-green);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+  .tour-history {
+    margin: 2rem 0 3rem;
+    padding-left: 1rem;
+  }
+
+  .tour-history__intro {
+    font-size: 1.1rem;
+  }
+
+  .tour-history__note {
+    font-size: 0.75rem;
+  }
+}
