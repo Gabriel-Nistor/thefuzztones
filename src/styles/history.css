@@ -89,3 +89,30 @@
     line-height: 1.7;
   }
 }
+
+/* =========================================================
+   HISTORY ARCHIVAL PHOTO
+   ========================================================= */
+
+.history-page__photo {
+  margin: 3rem 0 0;
+}
+
+.history-page__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  filter: grayscale(100%);
+}
+
+.history-page__photo figcaption {
+  margin-top: 0.8rem;
+
+  color: var(--color-fuzz-green);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
