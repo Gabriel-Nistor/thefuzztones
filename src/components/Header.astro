@@ -6,7 +6,7 @@ const navItems = [
   { label: 'Music', href: '/music' },
   { label: 'Media', href: '/media' },
   { label: 'History', href: '/history' },
-  { label: 'Merch', href: '/merch' },
+  { label: 'Merch', href: 'https://ezfkxp-nw.myshopify.com/', external: true },
   { label: 'Links', href: '/links' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -25,6 +25,8 @@ const currentPath = Astro.url.pathname;
         navItems.map((item) => (
           <a
             href={item.href}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener noreferrer' : undefined}
             class:list={{
               active: currentPath === item.href,
             }}
