@@ -1,49 +1,404 @@
+
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import releases from '../data/discography.json';
+
+const categories = [
+  { label: 'All Releases', value: 'all' },
+  { label: 'Albums', value: 'albums' },
+  { label: 'Singles & EPs', value: 'singles-eps' },
+  { label: 'Live Albums', value: 'live' },
+  { label: 'Compilations', value: 'compilations' },
+];
+
+// Default: available to buy first, then newest to oldest
+const sortedReleases = [...releases].sort((a, b) => {
+  const buyDifference =
+    Number(Boolean(b.buy)) - Number(Boolean(a.buy));
+
+  if (buyDifference !== 0) return buyDifference;
+
+  return b.year - a.year || a.title.localeCompare(b.title);
+});
 ---
 
 <MainLayout
   title="Music | The Fuzztones"
-  description="Explore music by The Fuzztones and visit the band's official Bandcamp for albums, releases, streaming and purchases."
+  description="Explore The Fuzztones' complete discography, including albums, singles, EPs, live recordings, compilations and selected reissues."
 >
   <main>
     <header class="page-header page-header--music">
       <span class="page-header__eyebrow">The Fuzztones</span>
-
       <h1 class="page-title">Music</h1>
-
       <div class="page-header__rule" aria-hidden="true"></div>
     </header>
 
-    <section class="music-page" aria-labelledby="music-listen-title">
-      <div class="music-page__intro">
-        <span class="music-page__eyebrow"> Official Bandcamp </span>
+    <section class="music-page" aria-labelledby="music-title">
 
-        <h2 id="music-listen-title" class="section-title">Listen &amp; Buy</h2>
+      <!-- =====================================================
+           INTRO
+           ===================================================== -->
+
+      <div class="music-page__intro">
+        <h2 id="music-title" class="section-title">
+          Discography
+        </h2>
 
         <p class="music-page__description">
-          Explore The Fuzztones’ music, releases and recordings on the band's
-          official Bandcamp.
+          Explore over four decades of fuzz, Farfisa and garage rock.
+          From the earliest singles to the latest releases, reissues
+          and rarities.
         </p>
-
-        <a
-          href="https://thefuzztones1.bandcamp.com/"
-          class="music-page__bandcamp-link"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Visit Official Bandcamp →
-        </a>
       </div>
 
-      <div class="music-page__player">
-        <iframe
-          class="music-page__bandcamp-player"
-          src="https://bandcamp.com/EmbeddedPlayer/album=3202576194/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/"
-          seamless
-          title="Lysergic Emanations by The Fuzztones"
-          loading="lazy"></iframe>
+
+      <!-- =====================================================
+           CATEGORY FILTERS
+           ===================================================== -->
+
+      <div
+        class="music-filters"
+        role="group"
+        aria-label="Filter releases by category"
+      >
+        {
+          categories.map((category) => (
+            <button
+              type="button"
+              class:list={[
+                'music-filter',
+                { 'is-active': category.value === 'all' }
+              ]}
+              data-filter={category.value}
+              aria-pressed={category.value === 'all'}
+            >
+              {category.label}
+            </button>
+          ))
+        }
       </div>
+
+
+      <!-- =====================================================
+           BUY FIRST + CHRONOLOGICAL SORTING
+           ===================================================== -->
+
+      <div class="music-options">
+
+        <label class="music-options__checkbox">
+          <input
+            type="checkbox"
+            id="buy-first"
+            checked
+          />
+          <span>Available to Buy First</span>
+        </label>
+
+        <label class="music-options__sort" for="music-sort">
+          Sort By:
+
+          <select id="music-sort" name="music-sort">
+            <option value="newest" selected>
+              Newest → Oldest
+            </option>
+            <option value="oldest">
+              Oldest → Newest
+            </option>
+          </select>
+        </label>
+
+      </div>
+
+
+      <!-- =====================================================
+           RESULTS COUNT
+           ===================================================== -->
+
+      <div class="music-results">
+        <span id="music-results-count" aria-live="polite">
+          Showing {sortedReleases.length} releases
+        </span>
+      </div>
+
+
+      <!-- =====================================================
+           DISCOGRAPHY GRID
+           ===================================================== -->
+
+      <div class="music-grid" id="music-grid">
+        {
+          sortedReleases.map((release) => (
+            <article
+              class="music-release"
+              data-category={release.category}
+              data-year={release.year}
+              data-buy={release.buy ? 'true' : 'false'}
+            >
+
+              <!-- COVER ARTWORK -->
+
+              <div class="music-release__cover">
+                {
+                  release.cover ? (
+                    <img
+                      src={release.cover}
+                      alt={`${release.title} cover artwork`}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div class="music-release__placeholder">
+                      <span>The Fuzztones</span>
+                      <span>No Cover Available</span>
+                    </div>
+                  )
+                }
+              </div>
+
+
+              <!-- RELEASE INFORMATION -->
+
+              <div class="music-release__content">
+
+                <div class="music-release__meta">
+                  <span>{release.year}</span>
+
+                  <span class="music-release__separator">
+                    /
+                  </span>
+
+                  <span>{release.format}</span>
+                </div>
+
+                <h3 class="music-release__title">
+                  {release.title}
+                </h3>
+
+                {
+                  release.description && (
+                    <p class="music-release__description">
+                      {release.description}
+                    </p>
+                  )
+                }
+
+                {
+                  release.reissuedBy && (
+                    <p class="music-release__reissue">
+                      Reissued by {release.reissuedBy}
+                    </p>
+                  )
+                }
+
+
+                <!-- LISTEN / BUY LINKS -->
+
+                {
+                  (release.listen || release.buy) && (
+                    <div class="music-release__actions">
+
+                      {
+                        release.listen && (
+                          <a
+                            href={release.listen}
+                            class="music-release__link music-release__link--listen"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Listen Here →
+                          </a>
+                        )
+                      }
+
+                      {
+                        release.buy && (
+                          <a
+                            href={release.buy}
+                            class="music-release__link music-release__link--buy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Buy Here →
+                          </a>
+                        )
+                      }
+
+                    </div>
+                  )
+                }
+
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+
+      <!-- =====================================================
+           EMPTY RESULTS MESSAGE
+           ===================================================== -->
+
+      <p class="music-empty" id="music-empty" hidden>
+        No releases found in this category.
+      </p>
+
     </section>
   </main>
 </MainLayout>
+
+
+<!-- =========================================================
+     DISCOGRAPHY FILTERING & SORTING
+     ========================================================= -->
+
+<script>
+  const filterButtons =
+    document.querySelectorAll<HTMLButtonElement>('.music-filter');
+
+  const buyFirstCheckbox =
+    document.querySelector<HTMLInputElement>('#buy-first');
+
+  const sortSelect =
+    document.querySelector<HTMLSelectElement>('#music-sort');
+
+  const musicGrid =
+    document.querySelector<HTMLElement>('#music-grid');
+
+  const resultsCount =
+    document.querySelector<HTMLElement>('#music-results-count');
+
+  const emptyMessage =
+    document.querySelector<HTMLElement>('#music-empty');
+
+  let activeCategory = 'all';
+
+  if (musicGrid && buyFirstCheckbox && sortSelect) {
+    const releaseCards = Array.from(
+      musicGrid.querySelectorAll<HTMLElement>('.music-release')
+    );
+
+    function updateDiscography() {
+
+      const buyFirst = buyFirstCheckbox!.checked;
+      const sortOrder = sortSelect!.value;
+
+      // -------------------------------------------------------
+      // SORT RELEASES
+      // -------------------------------------------------------
+
+      const sorted = [...releaseCards].sort((a, b) => {
+        const aYear = Number(a.dataset.year);
+        const bYear = Number(b.dataset.year);
+
+        // Available to buy first (when checkbox is checked)
+        if (buyFirst) {
+          const aAvailable = a.dataset.buy === 'true' ? 1 : 0;
+          const bAvailable = b.dataset.buy === 'true' ? 1 : 0;
+
+          if (aAvailable !== bAvailable) {
+            return bAvailable - aAvailable;
+          }
+        }
+
+        // Chronological sorting
+        if (sortOrder === 'oldest') {
+          return aYear - bYear;
+        }
+
+        return bYear - aYear;
+      });
+
+      // -------------------------------------------------------
+      // APPLY SORTING
+      // -------------------------------------------------------
+
+      sorted.forEach((card) => {
+        musicGrid!.appendChild(card);
+      });
+
+      // -------------------------------------------------------
+      // APPLY CATEGORY FILTER
+      // -------------------------------------------------------
+
+      let visibleCount = 0;
+
+      sorted.forEach((card) => {
+        const visible =
+          activeCategory === 'all' ||
+          card.dataset.category === activeCategory;
+
+        card.hidden = !visible;
+
+        if (visible) {
+          visibleCount++;
+        }
+      });
+
+      // -------------------------------------------------------
+      // UPDATE RESULTS COUNT
+      // -------------------------------------------------------
+
+      if (resultsCount) {
+        resultsCount.textContent =
+          `Showing ${visibleCount} ${
+            visibleCount === 1 ? 'release' : 'releases'
+          }`;
+      }
+
+      // -------------------------------------------------------
+      // EMPTY RESULTS
+      // -------------------------------------------------------
+
+      if (emptyMessage) {
+        emptyMessage.hidden = visibleCount !== 0;
+      }
+    }
+
+
+    // =========================================================
+    // CATEGORY BUTTONS
+    // =========================================================
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeCategory = button.dataset.filter || 'all';
+
+        filterButtons.forEach((item) => {
+          const isActive = item === button;
+
+          item.classList.toggle('is-active', isActive);
+          item.setAttribute('aria-pressed', String(isActive));
+        });
+
+        updateDiscography();
+      });
+    });
+
+
+    // =========================================================
+    // AVAILABLE TO BUY FIRST
+    // =========================================================
+
+    buyFirstCheckbox.addEventListener(
+      'change',
+      updateDiscography
+    );
+
+
+    // =========================================================
+    // NEWEST / OLDEST SORTING
+    // =========================================================
+
+    sortSelect.addEventListener(
+      'change',
+      updateDiscography
+    );
+
+
+    // =========================================================
+    // INITIAL DEFAULT STATE
+    // =========================================================
+
+    updateDiscography();
+  }
+</script>

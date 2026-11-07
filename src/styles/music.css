@@ -2,21 +2,6 @@
    MUSIC PAGE
    ========================================================= */
 
-.music-page {
-  width: min(calc(100% - 3rem), var(--container-width));
-  margin-inline: auto;
-  padding: 0 0 clamp(5rem, 9vw, 8rem);
-
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 1.1fr);
-  gap: clamp(2.5rem, 6vw, 6rem);
-  align-items: start;
-}
-
-/* =========================================================
-   PAGE HEADER OVERRIDES
-   ========================================================= */
-
 .page-header--music .page-title {
   font-size: clamp(3.8rem, 8vw, 7rem);
 }
@@ -25,107 +10,362 @@
   display: none;
 }
 
+.music-page {
+  width: min(calc(100% - 3rem), var(--container-width));
+  margin-inline: auto;
+  padding: 0 0 clamp(5rem, 9vw, 8rem);
+}
+
 /* =========================================================
    INTRO
    ========================================================= */
 
 .music-page__intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
-.music-page__eyebrow {
-  display: block;
-  margin-bottom: 1rem;
-
-  color: var(--color-accent);
-
-  font-size: 0.72rem;
-  font-weight: 600;
+.music-page__intro .section-title {
+  margin: 0 0 1.5rem;
+  font-size: clamp(3rem, 5vw, 5rem);
   line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.music-page .section-title {
-  margin-bottom: 1.5rem;
-
-  font-size: clamp(2.6rem, 5vw, 4.5rem);
 }
 
 .music-page__description {
-  max-width: 34rem;
+  max-width: 55rem;
   margin: 0;
 
   color: var(--color-text-muted);
-
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  line-height: 1.7;
 }
 
 /* =========================================================
-   BANDCAMP LINK
+   CATEGORY FILTERS
    ========================================================= */
 
-.music-page__bandcamp-link {
+.music-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  margin-bottom: 2rem;
+}
+
+.music-filter {
+  padding: 0.85rem 1.2rem;
+
+  border: 1px solid var(--color-border);
+
+  color: var(--color-text);
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    color var(--transition),
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.music-filter.is-active {
+  color: var(--color-bg);
+  background: var(--color-fuzz-green);
+  border-color: var(--color-fuzz-green);
+}
+
+.music-filter:focus-visible {
+  outline: 2px solid var(--color-fuzz-green);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   SORTING OPTIONS
+   ========================================================= */
+
+.music-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+
+  padding: 1.5rem 0;
+
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.music-options__checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  color: var(--color-text);
+
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.music-options__checkbox input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+
+  accent-color: var(--color-fuzz-green);
+  cursor: pointer;
+}
+
+.music-options__sort {
+  color: var(--color-text-muted);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   RESULTS COUNT
+   ========================================================= */
+
+.music-results {
+  margin: 2rem 0 1.5rem;
+
+  color: var(--color-text-muted);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   DISCOGRAPHY GRID
+   ========================================================= */
+
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2.5rem, 4vw, 4rem) clamp(1.5rem, 3vw, 3rem);
+}
+
+/* Important: filtered releases must remain hidden */
+
+.music-release[hidden] {
+  display: none !important;
+}
+
+.music-release {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* =========================================================
+   COVER ARTWORK
+   ========================================================= */
+
+.music-release__cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 1.5rem;
+
+  overflow: hidden;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.music-release__cover img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  transition: transform var(--transition);
+}
+
+/* =========================================================
+   MISSING COVER PLACEHOLDER
+   ========================================================= */
+
+.music-release__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+
+  color: var(--color-fuzz-green);
+  background: var(--color-surface);
+
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.music-release__placeholder span:first-child {
+  font-family: var(--font-brand);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1;
+}
+
+.music-release__placeholder span:last-child {
+  color: var(--color-text-muted);
+
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+/* =========================================================
+   RELEASE INFORMATION
+   ========================================================= */
+
+.music-release__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+}
+
+.music-release__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+
+  margin-bottom: 0.85rem;
+
+  color: var(--color-fuzz-green);
+
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.music-release__separator {
+  color: var(--color-text-muted);
+}
+
+.music-release__title {
+  margin: 0 0 1rem;
+
+  color: var(--color-text);
+
+  font-family: var(--font-brand);
+  font-size: clamp(1.7rem, 2.5vw, 2.5rem);
+  font-weight: normal;
+  line-height: 1.1;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.music-release__description {
+  margin: 0 0 1rem;
+
+  color: var(--color-text-muted);
+
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.music-release__reissue {
+  margin: 0 0 1rem;
+
+  color: var(--color-text-muted);
+
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   LISTEN / BUY LINKS
+   ========================================================= */
+
+.music-release__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.music-release__link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  min-height: 3rem;
-  margin-top: 2rem;
-  padding: 0.8rem 1.25rem;
+  min-height: 2.5rem;
+  padding: 0.75rem 1rem;
 
-  border: 1px solid var(--color-text);
+  border: 1px solid var(--color-border);
 
-  color: var(--color-bg);
-  background: var(--color-text);
-
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
   text-decoration: none;
   text-transform: uppercase;
 
   transition:
-    background var(--transition),
     color var(--transition),
     border-color var(--transition),
-    transform var(--transition);
+    background-color var(--transition);
+}
+
+.music-release__link--listen {
+  color: var(--color-fuzz-green);
+  border-color: var(--color-fuzz-green);
+}
+
+.music-release__link--buy {
+  color: var(--color-text);
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}
+
+.music-release__link:focus-visible {
+  outline: 2px solid var(--color-fuzz-green);
+  outline-offset: 3px;
 }
 
 /* =========================================================
-   FEATURED PLAYER AREA
+   EMPTY RESULTS
    ========================================================= */
 
-.music-page__player {
-  width: 100%;
+.music-empty {
+  margin: 3rem 0;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: clamp(1rem, 2vw, 1.5rem);
-
-  border: 1px solid var(--color-border);
-
-  background: radial-gradient(
-    circle at center,
-    #1b1916 0%,
-    #0d0d0c 50%,
-    #050505 100%
-  );
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-.music-page__bandcamp-player {
-  display: block;
-
-  width: 100%;
-  height: 120px;
-
-  border: 0;
+.music-empty[hidden] {
+  display: none !important;
 }
 
 /* =========================================================
@@ -133,13 +373,33 @@
    ========================================================= */
 
 @media (hover: hover) {
-  .music-page__bandcamp-link:hover,
-  .music-page__bandcamp-link:focus-visible {
-    background: var(--color-accent);
+  .music-filter:not(.is-active):hover {
+    color: var(--color-accent);
     border-color: var(--color-accent);
-    color: #fff;
+  }
 
-    transform: translateY(-2px);
+  .music-release__link--listen:hover {
+    color: var(--color-bg);
+    background: var(--color-fuzz-green);
+  }
+
+  .music-release__link--buy:hover {
+    color: var(--color-text);
+    background: transparent;
+  }
+
+  .music-release__cover:hover img {
+    transform: scale(1.03);
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .music-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -147,27 +407,46 @@
    MOBILE
    ========================================================= */
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .music-page {
     width: min(calc(100% - 2rem), var(--container-width));
-
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-
     padding-bottom: 4rem;
   }
 
+  .music-page__intro .section-title {
+    font-size: clamp(2.8rem, 12vw, 4rem);
+  }
+
   .music-page__description {
-    font-size: 0.95rem;
-    line-height: 1.7;
+    font-size: 1rem;
   }
 
-  .music-page__bandcamp-link {
-    width: 100%;
+  .music-filters {
+    gap: 0.6rem;
   }
 
-  .music-page__player {
-    padding: 0.75rem;
+  .music-filter {
+    padding: 0.75rem 0.9rem;
+    font-size: 0.7rem;
+  }
+
+  .music-options {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .music-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .music-release__title {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .music-release__cover {
+    margin-bottom: 1.25rem;
   }
 }
 
@@ -176,7 +455,40 @@
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .music-page__bandcamp-link {
+  .music-filter,
+  .music-release__cover img,
+  .music-release__link {
     transition: none;
   }
+}
+
+/* =========================================================
+   DISCOGRAPHY SORT DROPDOWN
+   ========================================================= */
+
+.music-options__sort {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.music-options__sort select {
+  padding: 0.6rem 0.8rem;
+
+  color: var(--color-text);
+  background: var(--color-bg);
+
+  border: 1px solid var(--color-border);
+
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+
+  cursor: pointer;
+}
+
+.music-options__sort select:focus-visible {
+  outline: 2px solid var(--color-fuzz-green);
+  outline-offset: 3px;
 }

@@ -1,0 +1,39 @@
+
+[
+  {
+    "id": "just-once-2026",
+    "title": "Just Once",
+    "year": 2026,
+    "category": "live",
+    "format": "Vinyl LP",
+    "cover": "/assets/images/cards/fuzztones-vinyl-just-once.png",
+    "description": "Rare live performances of songs played only once.",
+    "reissuedBy": "",
+    "listen": "",
+    "buy": ""
+  },
+  {
+    "id": "lysergic-emanations-1985",
+    "title": "Lysergic Emanations",
+    "year": 1985,
+    "category": "albums",
+    "format": "Vinyl LP",
+    "cover": "",
+    "description": "The Fuzztones' debut studio album.",
+    "reissuedBy": "",
+    "listen": "",
+    "buy": ""
+  },
+  {
+    "id": "bad-news-travels-fast-1984",
+    "title": "Bad News Travels Fast",
+    "year": 1984,
+    "category": "singles-eps",
+    "format": "7\" Vinyl",
+    "cover": "",
+    "description": "",
+    "reissuedBy": "",
+    "listen": "",
+    "buy": ""
+  }
+]
