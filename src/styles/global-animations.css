@@ -36,10 +36,6 @@
   animation-delay: 520ms;
 }
 
-.hero__description {
-  animation: heroDescriptionIn 650ms ease-out 620ms both;
-}
-
 /* Animation keyframes */
 
 @keyframes headerFadeIn {
@@ -144,8 +140,7 @@
   .site-header,
   .hero__logo-link,
   .hero__media,
-  .hero__statement span,
-  .hero__description {
+  .hero__statement span {
     animation: none;
     opacity: 1;
     transform: none;

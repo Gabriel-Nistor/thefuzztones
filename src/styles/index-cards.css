@@ -5,7 +5,7 @@
 .home-cards {
   width: min(calc(100% - 3rem), var(--container-width));
   margin-inline: auto;
-  padding: clamp(4rem, 8vw, 7rem) 0;
+  padding: clamp(1.5rem, 3vw, 2.75rem) 0 clamp(4rem, 8vw, 7rem);
 }
 
 .home-cards__grid {
@@ -234,7 +234,6 @@
   }
 }
 
-
 /* =========================================================
    TOUR
    ========================================================= */
@@ -338,7 +337,7 @@
 @media (max-width: 800px) {
   .home-cards {
     width: min(calc(100% - 2rem), var(--container-width));
-    padding: 3rem 0;
+    padding: 1.5rem 0 3rem;
   }
 
   .home-cards__grid {
