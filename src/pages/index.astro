@@ -73,12 +73,25 @@ const websiteSchema = {
     <section class="home-cards" aria-label="Featured sections">
       <div class="home-cards__grid">
         <a href="/#latest-news" class="home-card home-card--news">
-          <span class="home-card__label">Latest News</span>
+          <div class="home-card__news-copy">
+            <span class="home-card__label">Latest News</span>
 
-          <div class="home-card__content">
-            <h2 class="home-card__title">Halloween Show in Berlin</h2>
+            <div class="home-card__content">
+              <h2 class="home-card__title">The Fuzztones vs The World</h2>
+              <span class="home-card__news-release"
+                >On DVD · 10 November 2026</span
+              >
+              <span class="home-card__action">Discover the documentary →</span>
+            </div>
+          </div>
 
-            <span class="home-card__action"> Read latest news → </span>
+          <div class="home-card__news-artwork" aria-hidden="true">
+            <img
+              src="/assets/images/cards/dvd-fuzztones-vs-the-world.jpg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </a>
 
@@ -122,11 +135,12 @@ const websiteSchema = {
     >
       <h2 id="latest-news-title" class="section-title">Latest News</h2>
 
+      <!-- FEATURED NEWS — THE FUZZTONES VS THE WORLD DVD -->
       <article class="latest-news__feature">
         <div class="latest-news__media">
           <img
-            src="/assets/images/cards/news-halloween-berlin.jpg"
-            alt="The Fuzztones Halloween show in Berlin"
+            src="/assets/images/cards/news-fuzztones-vs-the-world-dvd.png"
+            alt="The Fuzztones vs The World documentary DVD cover"
             class="latest-news__image"
             loading="lazy"
             decoding="async"
@@ -135,67 +149,94 @@ const websiteSchema = {
 
         <div class="latest-news__content">
           <div class="latest-news__details">
-            <time datetime="2026-10-31T21:00"> 31 October 2026 · 9 PM </time>
-
-            <a
-              href="https://maps.app.goo.gl/ngtTfRFDAkJsJw9d6"
-              target="_blank"
-              rel="noreferrer"
-            >
-              BI NUU · U-Bhf Schlesisches Tor · Berlin
-            </a>
+            <time datetime="2026-11-10">10 November 2026 · DVD Release</time>
           </div>
 
           <h3 class="latest-news__headline">
-            The Fuzztones Halloween Show Returns to Berlin
+            The Fuzztones vs The World — OUT NOW ON DVD!
           </h3>
 
           <div class="latest-news__copy">
+            <p><em>A tale of sex, LSD, and rock n roll.</em></p>
+
             <p>
-              After ten years, The Fuzztones’ legendary Halloween show returns
-              to Berlin!
+              <em>The Fuzztones vs The World</em> chronicles the highs and lows of
+              a band whose career has spanned more than four decades of garage rock.
             </p>
 
             <p>
-              Expect a night packed with the dark, spooky and twisted sounds of
-              <em>Monster A Go-Go</em>, plenty of surprises, a secret themed
-              band costume and a stage transformed especially for Halloween.
+              From their beginnings in New York City in 1980 to their enduring
+              influence on psychedelic punk and garage rock, discover the story
+              behind The Fuzztones.
             </p>
 
             <p>
-              <strong>
-                One night. One special Halloween set. And plenty we’re not going
-                to reveal just yet.
-              </strong>
+              <strong>OUT NOW ON DVD!</strong>
             </p>
 
             <p>
-              <strong>Come out, come out, whatever you are!</strong>
+              Order your copy today from your favourite local record or DVD
+              shop, or from online retailers including Amazon and MVD Shop.
+            </p>
+
+            <p>
+              <strong>Support independent retailers whenever possible!</strong>
             </p>
           </div>
 
           <div class="latest-news__actions">
             <a
-              href="https://hoochiekoo.us5.list-manage.com/subscribe?u=9b3912f7178474c83082a0ee9&id=b717cc285a"
+              href="/news#fuzztones-vs-the-world"
               class="latest-news__button latest-news__button--primary"
-              target="_blank"
-              rel="noreferrer"
             >
-              Get Tickets →
+              Read More →
             </a>
 
-            <a
-              href="https://maps.app.goo.gl/ngtTfRFDAkJsJw9d6"
-              class="latest-news__button"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View Location →
+            <a href="/media#fuzztones-vs-the-world" class="latest-news__button">
+              Official Trailer →
             </a>
           </div>
         </div>
       </article>
 
+      <!-- SECONDARY NEWS — SPANISH TOUR -->
+      <article class="latest-news__secondary">
+        <div class="latest-news__secondary-media">
+          <img
+            src="/assets/images/cards/tour-live.jpg"
+            alt="The Fuzztones performing live"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="latest-news__secondary-content">
+          <div class="latest-news__details">
+            <time datetime="2026-11-23">23–28 November 2026</time>
+          </div>
+
+          <p class="latest-news__secondary-tagline">
+            <em>Six nights of fuzz across Spain!</em>
+          </p>
+
+          <h3 class="latest-news__secondary-headline">
+            The Fuzztones — Spanish Tour 2026
+          </h3>
+
+          <p class="latest-news__secondary-copy">
+            The Fuzztones return to Spain for six shows this November: Burgos,
+            Santiago de Compostela, Oviedo, Santander, Bilbao and Madrid.
+          </p>
+
+          <p class="latest-news__secondary-copy">
+            Find venues, show times and ticket links on the Tour page.
+          </p>
+
+          <a href="/tour" class="latest-news__button"> View Tour Dates → </a>
+        </div>
+      </article>
+
+      <!-- SECONDARY NEWS — JUST ONCE LP -->
       <article class="latest-news__secondary">
         <div class="latest-news__secondary-media">
           <img
@@ -208,11 +249,11 @@ const websiteSchema = {
 
         <div class="latest-news__secondary-content">
           <div class="latest-news__details">
-            <time datetime="2026-11-06">6 November 2026</time>
+            <time datetime="2026-11-06">6 November 2026 · LP Release</time>
           </div>
 
           <p class="latest-news__secondary-tagline">
-            <em>New Fuzztones LP out soon!</em>
+            <em>New Fuzztones LP — now available!</em>
           </p>
 
           <h3 class="latest-news__secondary-headline">
@@ -220,59 +261,17 @@ const websiteSchema = {
           </h3>
 
           <p class="latest-news__secondary-copy">
-            A wonderfully odd collection for serious Fuzztones fans! <em
-              >Just Once</em
-            >
-            digs into the band's live archives for a selection of rare performances
-            of songs that The Fuzztones apparently played live just once.
+            <em>Just Once</em> digs into the band's live archives for rare performances
+            of songs they apparently played live only once. A collection of unusual
+            moments and deep-cut Fuzztones history.
           </p>
 
           <p class="latest-news__secondary-copy">
-            A collection of performances played once — and only once!
-          </p>
-
-          <p class="latest-news__secondary-copy">
-            <strong
-              >On Cleopatra Records — scheduled release November 6, 2026.</strong
-            >
+            <strong>Out now on Cleopatra Records.</strong>
           </p>
 
           <a href="/news#just-once" class="latest-news__button">
             Read More →
-          </a>
-        </div>
-      </article>
-
-      <article class="latest-news__secondary">
-        <div class="latest-news__secondary-media">
-          <img
-            src="/assets/images/cards/news-fuzztones-vs-the-world-dvd.png"
-            alt="The Fuzztones vs The World documentary"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-
-        <div class="latest-news__secondary-content">
-          <div class="latest-news__details">
-            <time datetime="2026-11-10"> 10 November 2026 </time>
-          </div>
-
-          <p class="latest-news__secondary-tagline">
-            <em>A tale of sex, LSD, and rock n roll</em>
-          </p>
-
-          <h3 class="latest-news__secondary-headline">
-            The Fuzztones vs The World — Coming to DVD
-          </h3>
-
-          <p class="latest-news__secondary-copy">
-            The documentary chronicling more than four decades of The Fuzztones
-            arrives on DVD November 10.
-          </p>
-
-          <a href="/media#fuzztones-vs-the-world" class="latest-news__button">
-            More Info + Trailer →
           </a>
         </div>
       </article>

@@ -141,16 +141,99 @@
 }
 
 /* =========================================================
-   LATEST NEWS
+   INDEX — DVD NEWS CARD (SPLIT LAYOUT)
    ========================================================= */
 
-.home-card--news::before {
-  background-image:
-    linear-gradient(rgba(25, 0, 0, 0.12), rgba(25, 0, 0, 0.12)),
-    url('/assets/images/cards/news-halloween-berlin.jpg');
-
-  background-position: center;
+.home-card--news {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 0;
+  background: #050505;
 }
+
+/* Disable the full-card background and overlay only for the DVD card. */
+.home-card--news::before,
+.home-card--news::after {
+  display: none;
+}
+
+.home-card__news-copy {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.home-card--news .home-card__content {
+  gap: 0.9rem;
+}
+
+/* Keep the entire headline on the black half, never over the poster. */
+.home-card--news .home-card__title {
+  max-width: 100%;
+  font-size: clamp(1.85rem, 2.45vw, 2.7rem);
+  line-height: 0.98;
+  overflow-wrap: anywhere;
+}
+
+.home-card__news-release {
+  color: var(--color-text);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.home-card--news .home-card__action {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+}
+
+/* Poster displays in full: no crop, no overlay, no distortion. */
+.home-card__news-artwork {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: #050505;
+}
+
+.home-card__news-artwork img {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 800px) {
+  .home-card--news .home-card__news-copy {
+    padding: clamp(1rem, 3.5vw, 1.5rem);
+    gap: 1rem;
+  }
+
+  .home-card--news .home-card__title {
+    font-size: clamp(1.35rem, 5.3vw, 2.3rem);
+  }
+
+  .home-card__news-release {
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+  }
+
+  .home-card--news .home-card__action {
+    font-size: 0.6rem;
+    letter-spacing: 0.02em;
+  }
+}
+
 
 /* =========================================================
    TOUR
