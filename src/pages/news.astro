@@ -12,8 +12,75 @@ import MainLayout from '../layouts/MainLayout.astro';
       <h1 class="page-title">News</h1>
       <div class="page-header__rule" aria-hidden="true"></div>
     </header>
-    <section class="news-page">
-      <article class="news-item news-item--featured" id="just-once">
+    <section class="news-page" aria-label="News and archive">
+      <article
+        class="news-item news-item--featured"
+        id="fuzztones-vs-the-world"
+      >
+        <div class="news-item__image">
+          <img
+            src="/assets/images/cards/news-fuzztones-vs-the-world-dvd.png"
+            alt="The Fuzztones vs The World documentary DVD cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="news-item__content">
+          <span class="news-item__label">New Release</span>
+
+          <p class="news-item__tagline">
+            <em>A tale of sex, LSD, and rock n roll</em>
+          </p>
+
+          <h2>The Fuzztones vs The World — OUT NOW ON DVD!</h2>
+
+          <p class="news-item__date">November 10, 2026 · DVD Release</p>
+
+          <p>
+            <em>The Fuzztones vs The World</em> chronicles the highs and lows of an
+            extraordinary band whose career has spanned more than four decades of
+            garage rock.
+          </p>
+
+          <p>
+            Formed in New York City in 1980, The Fuzztones helped redefine
+            psychedelic punk and sparked a new garage rock scene, driven by the
+            uncompromising vision of Rudi Protrudi.
+          </p>
+
+          <p><strong>OUT NOW ON DVD!</strong></p>
+
+          <p>
+            Order your copy today from your favourite local record or DVD shop,
+            or from online retailers including Amazon and MVD Shop.
+          </p>
+
+          <p>
+            <strong>Support independent retailers whenever possible!</strong>
+          </p>
+
+          <div class="news-item__actions">
+            <a
+              href="/media#fuzztones-vs-the-world"
+              class="latest-news__button latest-news__button--primary"
+            >
+              More Info + Official Trailer →
+            </a>
+
+            <a
+              href="https://www.imdb.com/title/tt33337078/"
+              class="latest-news__button latest-news__button--primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              IMDb
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="news-item" id="just-once">
         <div class="news-item__image">
           <img
             src="/assets/images/cards/fuzztones-vinyl-just-once.png"
@@ -82,90 +149,35 @@ import MainLayout from '../layouts/MainLayout.astro';
         </div>
       </article>
 
-      <article class="news-item" id="fuzztones-vs-the-world">
-        <div class="news-item__image">
-          <img
-            src="/assets/images/cards/news-fuzztones-vs-the-world-dvd.png"
-            alt="The Fuzztones vs The World documentary DVD cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+      <section
+        class="news-archive"
+        id="news-archive"
+        aria-labelledby="news-archive-title"
+      >
+        <h2 id="news-archive-title" class="news-archive__heading">
+          News Archive
+        </h2>
 
-        <div class="news-item__content">
-          <span class="news-item__label">New Release</span>
-
-          <p class="news-item__tagline">
-            <em>A tale of sex, LSD, and rock n roll</em>
-          </p>
-
-          <h2>The Fuzztones vs The World — OUT NOW ON DVD!</h2>
-
-          <p class="news-item__date">November 10, 2026 · DVD Release</p>
-
-          <p>
-            <em>The Fuzztones vs The World</em> chronicles the highs and lows of an
-            extraordinary band whose career has spanned more than four decades of
-            garage rock.
-          </p>
-
-          <p>
-            Formed in New York City in 1980, The Fuzztones helped redefine
-            psychedelic punk and sparked a new garage rock scene, driven by the
-            uncompromising vision of Rudi Protrudi.
-          </p>
-
-          <p><strong>OUT NOW ON DVD!</strong></p>
-
-          <p>
-            Order your copy today from your favourite local record or DVD shop,
-            or from online retailers including Amazon and MVD Shop.
-          </p>
-
-          <p>
-            <strong>Support independent retailers whenever possible!</strong>
-          </p>
-
-          <div class="news-item__actions">
-            <a
-              href="/media#fuzztones-vs-the-world"
-              class="latest-news__button latest-news__button--primary"
-            >
-              More Info + Official Trailer →
-            </a>
-
-            <a
-              href="https://www.imdb.com/title/tt33337078/"
-              class="latest-news__button latest-news__button--primary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              IMDb
-            </a>
+        <article class="news-archive__item">
+          <div class="news-archive__image">
+            <img
+              src="/assets/images/cards/news-halloween-berlin.jpg"
+              alt="The Fuzztones Halloween show in Berlin"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
-        </div>
-      </article>
 
-      <article class="news-item">
-        <div class="news-item__image">
-          <img
-            src="/assets/images/cards/news-halloween-berlin.jpg"
-            alt="The Fuzztones Halloween show in Berlin"
-            loading="eager"
-            decoding="async"
-          />
-        </div>
-
-        <div class="news-item__content">
-          <span class="news-item__label">Featured</span>
-
-          <h2>The Fuzztones — Halloween in Berlin</h2>
-
-          <p class="news-item__date">October 31, 2026</p>
-
-          <p>The Fuzztones return to Berlin for Halloween night at BI NUU.</p>
-        </div>
-      </article>
+          <div class="news-archive__content">
+            <span class="news-archive__label">Past Event</span>
+            <h3>The Fuzztones — Halloween in Berlin</h3>
+            <p class="news-archive__date">October 31, 2026</p>
+            <p class="news-archive__copy">
+              The Fuzztones' Halloween show at BI NUU in Berlin.
+            </p>
+          </div>
+        </article>
+      </section>
     </section>
   </main>
 </MainLayout>
