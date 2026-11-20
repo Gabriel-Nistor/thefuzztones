@@ -6,7 +6,11 @@ const navItems = [
   { label: 'Music', href: '/music' },
   { label: 'Media', href: '/media' },
   { label: 'History', href: '/history' },
-  { label: 'Merch', href: 'https://ezfkxp-nw.myshopify.com/', external: true },
+  {
+    label: 'Merch',
+    href: 'https://thefuzztones.myshopify.com/',
+    external: true,
+  },
   { label: 'Links', href: '/links' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -21,20 +25,18 @@ const currentPath = Astro.url.pathname;
       class="site-header__nav"
       aria-label="Primary navigation"
     >
-      {
-        navItems.map((item) => (
-          <a
-            href={item.href}
-            target={item.external ? '_blank' : undefined}
-            rel={item.external ? 'noopener noreferrer' : undefined}
-            class:list={{
-              active: currentPath === item.href,
-            }}
-          >
-            {item.label}
-          </a>
-        ))
-      }
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          target={item.external ? '_blank' : undefined}
+          rel={item.external ? 'noopener noreferrer' : undefined}
+          class:list={{
+            active: currentPath === item.href,
+          }}
+        >
+          {item.label}
+        </a>
+      ))}
     </nav>
 
     <button
@@ -56,18 +58,16 @@ const currentPath = Astro.url.pathname;
     aria-label="Mobile navigation"
     hidden
   >
-    {
-      navItems.map((item) => (
-        <a
-          href={item.href}
-          class:list={{
-            active: currentPath === item.href,
-          }}
-        >
-          {item.label}
-        </a>
-      ))
-    }
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class:list={{
+          active: currentPath === item.href,
+        }}
+      >
+        {item.label}
+      </a>
+    ))}
   </nav>
 </header>
 
