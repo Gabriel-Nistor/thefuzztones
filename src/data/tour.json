@@ -1,0 +1,126 @@
+[
+  {
+    "date": "2026-11-23",
+    "timeZone": "Europe/Madrid",
+    "type": "Live Show",
+    "city": "Burgos, Spain",
+    "venue": "Sala Riviera",
+    "location": "Sala Riviera. Paseo del Espolón , Burgos",
+    "time": "21:00",
+    "ticketUrl": "https://entradium.com/events/the-fuzztones-burgos-riviera",
+    "ticketLabel": "Get Tickets →"
+  },
+  {
+    "date": "2026-11-24",
+    "timeZone": "Europe/Madrid",
+    "type": "Live Show",
+    "city": "Santiago de Compostela, Spain",
+    "venue": "Sala Capitol",
+    "location": "Rúa de Concepción Arenal, 5, 15702 Santiago de Compostela, A Coruña",
+    "time": "20:00",
+    "ticketUrl": "https://outonocodaxfest.entradas.plus/entradas/es/outonocodax-24nov-capitol",
+    "ticketLabel": "Get Tickets →"
+  },
+  {
+    "date": "2026-11-25",
+    "timeZone": "Europe/Madrid",
+    "type": "Live Show",
+    "city": "Oviedo, Spain",
+    "venue": "Gong Galaxy Club",
+    "location": "Calle Julián Cañedo, s/n, 33008, Oviedo",
+    "time": "20:30",
+    "ticketUrl": "https://salagong.com/evento/the-fuzztones-3/",
+    "ticketLabel": "Get Tickets →"
+  },
+  {
+    "date": "2026-11-26",
+    "timeZone": "Europe/Madrid",
+    "type": "Live Show",
+    "city": "Santander, Spain",
+    "venue": "Rock Beer The New",
+    "location": "C. Peñas Redondas, 15 39010, Santander, Cantabria",
+    "time": "22:00",
+    "ticketUrl": "https://entradium.com/events/the-fuzztones-santander-rock-beer-the-new",
+    "ticketLabel": "Get Tickets →"
+  },
+  {
+    "date": "2026-11-27",
+    "timeZone": "Europe/Madrid",
+    "type": "Live Show",
+    "city": "Zaragoza, Spain",
+    "venue": "Sala Creedence",
+    "location": "Plaza San Lamberto Nº3, Zaragoza, Spain, 50004",
+    "time": "23:00",
+    "ticketUrl": "https://entradium.com/events/the-fuzztones-eeuu-15-anos-de-sala-creedence",
+    "ticketLabel": "Get Tickets →"
+  },
+  {
+    "date": "2026-11-28",
+    "timeZone": "Europe/Madrid",
+    "type": "Live Show",
+    "city": "Madrid, Spain",
+    "venue": "GRUTA 77",
+    "location": "C. Cuclillo, 6 · 28019 Madrid",
+    "time": "21:30",
+    "ticketUrl": "https://gruta77.movingtickets.com/Entradas-Fuzztones-concierto-en-Gruta77-Madrid",
+    "ticketLabel": "SOLD OUT"
+  },
+  {
+    "date": "2027-01-16",
+    "timeZone": "Europe/Rome",
+    "type": "Live Show",
+    "city": "Milan, Italy",
+    "venue": "Slaughter Club",
+    "location": "Milan · Italy",
+    "ticketLabel": "Tickets Available Soon"
+  },
+  {
+    "date": "2027-04-16",
+    "timeZone": "Europe/Madrid",
+    "type": "Upcoming Tour Dates",
+    "city": "The Fuzztones in Spain 2027",
+    "kind": "announcement",
+    "endDate": "2027-04-24",
+    "dateDisplay": {
+      "day": "Spain",
+      "month": "Tour",
+      "year": "2027"
+    },
+    "location": "April 16–24, 2027",
+    "note": "Full dates and venues will be announced soon.",
+    "ticketLabel": "More Details Soon"
+  },
+  {
+    "date": "2027-04-17",
+    "timeZone": "Europe/Madrid",
+    "type": "Live Show",
+    "city": "Tarragona, Spain",
+    "ticketLabel": "Tickets Available Soon"
+  },
+  {
+    "date": "2027-04-18",
+    "timeZone": "Europe/Madrid",
+    "type": "Live Show",
+    "city": "Badalona, Spain",
+    "ticketLabel": "Tickets Available Soon"
+  },
+  {
+    "date": "2027-04-22",
+    "timeZone": "Europe/Madrid",
+    "type": "Live Show",
+    "city": "Benidorm, Spain",
+    "venue": "BALI R'N'R FEST",
+    "location": "BALI R'N'R FEST",
+    "ticketLabel": "Tickets Available Soon"
+  },
+  {
+    "date": "2026-10-31",
+    "timeZone": "Europe/Berlin",
+    "type": "Halloween Show",
+    "city": "Berlin, Germany",
+    "venue": "BI NUU",
+    "location": "U-Bhf Schlesisches Tor · Berlin",
+    "time": "21:00",
+    "timeLabel": "9 PM"
+  }
+]

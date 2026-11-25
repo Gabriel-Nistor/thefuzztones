@@ -1,5 +1,50 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import tourData from '../data/tour.json';
+import { isPastDate } from '../utils/tour-dates.js';
+
+type TourEvent = {
+  date: string;
+  endDate?: string;
+  timeZone?: string;
+  kind?: string;
+  type: string;
+  city: string;
+  venue?: string;
+  location?: string;
+  note?: string;
+  time?: string;
+  timeLabel?: string;
+  ticketUrl?: string;
+  ticketLabel?: string;
+  dateDisplay?: { day: string; month: string; year: string };
+};
+
+const events: TourEvent[] = tourData;
+const now = new Date();
+const isPast = (event: TourEvent) =>
+  isPastDate(event.endDate ?? event.date, event.timeZone, now);
+
+// A tour announcement is not an individual concert. Hide it after the tour.
+const upcoming = events
+  .filter((event) => !isPast(event))
+  .sort((a, b) => a.date.localeCompare(b.date));
+const past = events
+  .filter((event) => isPast(event) && event.kind !== 'announcement')
+  .sort((a, b) => b.date.localeCompare(a.date));
+
+function dateParts(event: TourEvent) {
+  if (event.dateDisplay) return event.dateDisplay;
+  const [year, month, day] = event.date.split('-');
+  return {
+    day: String(Number(day)),
+    month: new Intl.DateTimeFormat('en-GB', {
+      month: 'long',
+      timeZone: 'UTC',
+    }).format(new Date(Date.UTC(Number(year), Number(month) - 1, 1))),
+    year,
+  };
+}
 ---
 
 <MainLayout
@@ -26,410 +71,177 @@ import MainLayout from '../layouts/MainLayout.astro';
       </a>
     </div>
 
-    <section class="tour-page" aria-labelledby="upcoming-shows-title">
-      <h2 id="upcoming-shows-title" class="section-title">Upcoming Shows</h2>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">23</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">November</span>
-            <span class="tour-event__year">2026</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type"> Live Show </span>
-
-          <h3 class="tour-event__city">Burgos, Spain</h3>
-
-          <p class="tour-event__venue">Sala Riviera</p>
-
-          <p class="tour-event__location">
-            Sala Riviera. Paseo del Espolón , Burgos
-          </p>
-
-          <time class="tour-event__time" datetime="2026-11-23T21:00">
-            21:00
-          </time>
-        </div>
-
-        <div class="tour-event__actions">
-          <a
-            href="https://entradium.com/events/the-fuzztones-burgos-riviera"
-            class="tour-event__button tour-event__button--primary"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Get Tickets →
-          </a>
-        </div>
-      </article>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">24</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">November</span>
-            <span class="tour-event__year">2026</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type"> Live Show </span>
-
-          <h3 class="tour-event__city">Santiago de Compostela, Spain</h3>
-
-          <p class="tour-event__venue">Sala Capitol</p>
-
-          <p class="tour-event__location">
-            Rúa de Concepción Arenal, 5, 15702 Santiago de Compostela, A Coruña
-          </p>
-
-          <time class="tour-event__time" datetime="2026-11-24T20:00">
-            20:00
-          </time>
-        </div>
-
-        <div class="tour-event__actions">
-          <a
-            href="https://outonocodaxfest.entradas.plus/entradas/es/outonocodax-24nov-capitol"
-            class="tour-event__button tour-event__button--primary"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Get Tickets →
-          </a>
-        </div>
-      </article>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">25</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">November</span>
-            <span class="tour-event__year">2026</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type"> Live Show </span>
-
-          <h3 class="tour-event__city">Oviedo, Spain</h3>
-
-          <p class="tour-event__venue">Gong Galaxy Club</p>
-
-          <p class="tour-event__location">
-            Calle Julián Cañedo, s/n, 33008, Oviedo
-          </p>
-
-          <time class="tour-event__time" datetime="2026-11-25T20:30">
-            20:30
-          </time>
-        </div>
-
-        <div class="tour-event__actions">
-          <a
-            href="https://salagong.com/evento/the-fuzztones-3/"
-            class="tour-event__button tour-event__button--primary"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Get Tickets →
-          </a>
-        </div>
-      </article>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">26</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">November</span>
-            <span class="tour-event__year">2026</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type"> Live Show </span>
-
-          <h3 class="tour-event__city">Santander, Spain</h3>
-
-          <p class="tour-event__venue">Rock Beer The New</p>
-
-          <p class="tour-event__location">
-            C. Peñas Redondas, 15 39010, Santander, Cantabria
-          </p>
-
-          <time class="tour-event__time" datetime="2026-11-26T22:00">
-            22:00
-          </time>
-        </div>
-
-        <div class="tour-event__actions">
-          <a
-            href="https://entradium.com/events/the-fuzztones-santander-rock-beer-the-new"
-            class="tour-event__button tour-event__button--primary"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Get Tickets →
-          </a>
-        </div>
-      </article>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">27</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">November</span>
-            <span class="tour-event__year">2026</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type"> Live Show </span>
-
-          <h3 class="tour-event__city">Zaragoza, Spain</h3>
-
-          <p class="tour-event__venue">Sala Creedence</p>
-
-          <p class="tour-event__location">
-            Plaza San Lamberto Nº3, Zaragoza, Spain, 50004
-          </p>
-
-          <time class="tour-event__time" datetime="2026-11-27T23:00">
-            23:00
-          </time>
-        </div>
-
-        <div class="tour-event__actions">
-          <a
-            href="https://entradium.com/events/the-fuzztones-eeuu-15-anos-de-sala-creedence"
-            class="tour-event__button tour-event__button--primary"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Get Tickets →
-          </a>
-        </div>
-      </article>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">28</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">November</span>
-            <span class="tour-event__year">2026</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type"> Live Show </span>
-
-          <h3 class="tour-event__city">Madrid, Spain</h3>
-
-          <p class="tour-event__venue">GRUTA 77</p>
-
-          <p class="tour-event__location">C. Cuclillo, 6 · 28019 Madrid</p>
-
-          <time class="tour-event__time" datetime="2026-11-28T21:30">
-            21:30
-          </time>
-        </div>
-
-        <div class="tour-event__actions">
-          <a
-            href="https://gruta77.movingtickets.com/Entradas-Fuzztones-concierto-en-Gruta77-Madrid"
-            class="tour-event__button tour-event__button--primary"
-            target="_blank"
-            rel="noreferrer"
-          >
-            SOLD OUT
-          </a>
-        </div>
-      </article>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">16</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">January</span>
-            <span class="tour-event__year">2027</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type"> Live Show </span>
-
-          <h3 class="tour-event__city">Milan, Italy</h3>
-
-          <p class="tour-event__venue">Slaughter Club</p>
-
-          <p class="tour-event__location">Milan · Italy</p>
-        </div>
-
-        <div class="tour-event__actions">
-          <span class="tour-event__button tour-event__button--primary">
-            Tickets Available Soon
-          </span>
-        </div>
-      </article>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">Spain</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">Tour</span>
-            <span class="tour-event__year">2027</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type"> Upcoming Tour Dates </span>
-
-          <h3 class="tour-event__city">The Fuzztones in Spain 2027</h3>
-
-          <p class="tour-event__location">April 16–24, 2027</p>
-
-          <p class="tour-event__location">
-            Full dates and venues will be announced soon.
-          </p>
-        </div>
-
-        <div class="tour-event__actions">
-          <span class="tour-event__button tour-event__button--primary">
-            More Details Soon
-          </span>
-        </div>
-      </article>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">17</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">April</span>
-            <span class="tour-event__year">2027</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type"> Live Show </span>
-
-          <h3 class="tour-event__city">Tarragona, Spain</h3>
-
-          <p class="tour-event__venue"></p>
-
-          <p class="tour-event__location"></p>
-        </div>
-
-        <div class="tour-event__actions">
-          <span class="tour-event__button tour-event__button--primary">
-            Tickets Available Soon
-          </span>
-        </div>
-      </article>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">18</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">April</span>
-            <span class="tour-event__year">2027</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type">Live Show</span>
-
-          <h3 class="tour-event__city">Badalona, Spain</h3>
-
-          <p class="tour-event__venue"></p>
-
-          <p class="tour-event__location"></p>
-        </div>
-
-        <div class="tour-event__actions">
-          <span class="tour-event__button tour-event__button--primary">
-            Tickets Available Soon
-          </span>
-        </div>
-      </article>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">22</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">April</span>
-            <span class="tour-event__year">2027</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type">Live Show</span>
-
-          <h3 class="tour-event__city">Benidorm, Spain</h3>
-
-          <p class="tour-event__venue">BALI R'N'R FEST</p>
-
-          <p class="tour-event__location">BALI R'N'R FEST</p>
-        </div>
-
-        <div class="tour-event__actions">
-          <span class="tour-event__button tour-event__button--primary">
-            Tickets Available Soon
-          </span>
-        </div>
-      </article>
-
-      <h2 id="past-events-title" class="section-title">Past Events</h2>
-      <div class="tour-history">
-        <p class="tour-history__intro">
-          Since the 1980s, The Fuzztones have toured extensively across the
-          United States, the UK and Europe, with later adventures taking them to
-          Japan, Brazil, Costa Rica, Uruguay and Argentina.
-        </p>
-
-        <p class="tour-history__note">
-          An archive of documented past performances is being assembled. More
-          shall be revealed soon...
-        </p>
-      </div>
-
-      <article class="tour-event">
-        <div class="tour-event__date">
-          <span class="tour-event__day">31</span>
-
-          <div class="tour-event__date-info">
-            <span class="tour-event__month">October</span>
-            <span class="tour-event__year">2026</span>
-          </div>
-        </div>
-
-        <div class="tour-event__content">
-          <span class="tour-event__type">Halloween Show</span>
-
-          <h3 class="tour-event__city">Berlin, Germany</h3>
-
-          <p class="tour-event__venue">BI NUU</p>
-
-          <p class="tour-event__location">U-Bhf Schlesisches Tor · Berlin</p>
-
-          <time class="tour-event__time" datetime="2026-10-31T21:00">
-            9 PM
-          </time>
-        </div>
-      </article>
+    <section
+      class="tour-page"
+      data-tour-page
+      aria-labelledby="upcoming-shows-title"
+    >
+      <h2 id="upcoming-shows-title" class="section-title">
+        Upcoming Shows
+      </h2>
+      <p data-tour-empty hidden={upcoming.length > 0}>
+        More tour dates will be announced soon.
+      </p>
+
+      {[
+        { isArchive: false, entries: upcoming },
+        { isArchive: true, entries: past },
+      ].map(({ isArchive, entries }) => (
+        <>
+          {isArchive && (
+            <>
+              <h2 id="past-events-title" class="section-title">
+                Past Events
+              </h2>
+              <div class="tour-history">
+                <p class="tour-history__intro">
+                  Since the 1980s, The Fuzztones have toured extensively across
+                  the United States, the UK and Europe, with later adventures
+                  taking them to Japan, Brazil, Costa Rica, Uruguay and
+                  Argentina.
+                </p>
+
+                <p class="tour-history__note">
+                  An archive of documented past performances is being assembled.
+                  More shall be revealed soon...
+                </p>
+              </div>
+            </>
+          )}
+
+          {entries.map((event) => {
+            const date = dateParts(event);
+            const ticketLabel =
+              event.ticketLabel ??
+              (event.ticketUrl ? 'Get Tickets →' : 'Tickets Available Soon');
+            return (
+              <article
+                class:list={['tour-event', { 'tour-event--past': isArchive }]}
+                data-tour-event
+                data-tour-date={event.date}
+                data-tour-end={event.endDate ?? event.date}
+                data-tour-time-zone={event.timeZone ?? 'Europe/London'}
+                data-tour-kind={event.kind ?? 'show'}
+              >
+                <div class="tour-event__date">
+                  <span class="tour-event__day">{date.day}</span>
+                  <div class="tour-event__date-info">
+                    <span class="tour-event__month">{date.month}</span>
+                    <span class="tour-event__year">{date.year}</span>
+                  </div>
+                </div>
+
+                <div class="tour-event__content">
+                  <span class="tour-event__type">{event.type}</span>
+                  <h3 class="tour-event__city">{event.city}</h3>
+                  {event.venue && (
+                    <p class="tour-event__venue">{event.venue}</p>
+                  )}
+                  {event.location && (
+                    <p class="tour-event__location">{event.location}</p>
+                  )}
+                  {event.note && (
+                    <p class="tour-event__location">{event.note}</p>
+                  )}
+                  {event.time && (
+                    <time
+                      class="tour-event__time"
+                      datetime={`${event.date}T${event.time}`}
+                    >
+                      {event.timeLabel ?? event.time}
+                    </time>
+                  )}
+                </div>
+
+                <div
+                  class="tour-event__actions"
+                  data-tour-actions
+                  hidden={isArchive}
+                >
+                  {event.ticketUrl ? (
+                    <a
+                      href={event.ticketUrl}
+                      class="tour-event__button tour-event__button--primary"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {ticketLabel}
+                    </a>
+                  ) : (
+                    <span class="tour-event__button tour-event__button--primary">
+                      {ticketLabel}
+                    </span>
+                  )}
+                </div>
+              </article>
+            );
+          })}
+        </>
+      ))}
     </section>
   </main>
 </MainLayout>
+
+<style>
+  [data-tour-actions][hidden],
+  [data-tour-empty][hidden] {
+    display: none !important;
+  }
+
+  [data-tour-empty]:not([hidden]) + #past-events-title {
+    margin-top: 4rem;
+  }
+</style>
+
+<script>
+  import { isPastDate } from '../utils/tour-dates.js';
+
+  // GitHub Pages serves static HTML. Refresh the categories in the browser
+  // so concerts move to the archive without another build or deployment.
+  function updateTourCategories() {
+    const page = document.querySelector('[data-tour-page]');
+    if (!page) return;
+    const pastTitle = page.querySelector('#past-events-title');
+    const empty = page.querySelector<HTMLElement>('[data-tour-empty]');
+    if (!pastTitle || !empty) return;
+
+    const now = new Date();
+    const upcoming: HTMLElement[] = [];
+    const past: HTMLElement[] = [];
+
+    for (const article of page.querySelectorAll<HTMLElement>(
+      '[data-tour-event]',
+    )) {
+      const { tourDate, tourEnd, tourTimeZone, tourKind } = article.dataset;
+      if (!tourDate || !tourEnd) continue;
+      const archived = isPastDate(tourEnd, tourTimeZone, now);
+
+      if (archived && tourKind === 'announcement') {
+        article.remove();
+        continue;
+      }
+
+      article.classList.toggle('tour-event--past', archived);
+      const actions = article.querySelector<HTMLElement>('[data-tour-actions]');
+      if (actions) actions.hidden = archived;
+      (archived ? past : upcoming).push(article);
+    }
+
+    const dateOrder = (a: HTMLElement, b: HTMLElement) =>
+      (a.dataset.tourDate ?? '').localeCompare(b.dataset.tourDate ?? '');
+
+    upcoming
+      .sort(dateOrder)
+      .forEach((article) => page.insertBefore(article, pastTitle));
+    past
+      .sort((a, b) => dateOrder(b, a))
+      .forEach((article) => page.append(article));
+    empty.hidden = upcoming.length > 0;
+  }
+
+  updateTourCategories();
+  document.addEventListener('astro:page-load', updateTourCategories);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) updateTourCategories();
+  });
+</script>
