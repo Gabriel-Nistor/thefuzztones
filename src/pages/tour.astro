@@ -1,7 +1,7 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import tourData from '../data/tour.json';
-import { isPastDate } from '../utils/tour-dates.js';
+import { isPastDate } from '../utilities/tour-dates.js';
 
 type TourEvent = {
   date: string;
@@ -194,7 +194,7 @@ function dateParts(event: TourEvent) {
 </style>
 
 <script>
-  import { isPastDate } from '../utils/tour-dates.js';
+  import { isPastDate } from '../utilities/tour-dates.js';
 
   // GitHub Pages serves static HTML. Refresh the categories in the browser
   // so concerts move to the archive without another build or deployment.

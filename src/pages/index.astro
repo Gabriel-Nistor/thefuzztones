@@ -1,6 +1,14 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 
+const heroLineups = [
+  'lineup-01.jpg',
+  'lineup-02.jpg',
+  'lineup-03.jpg',
+  'lineup-04.jpg',
+  'lineup-05.jpg',
+];
+
 const musicGroupSchema = {
   '@context': 'https://schema.org',
   '@type': 'MusicGroup',
@@ -48,14 +56,30 @@ const websiteSchema = {
       </a>
 
       <div class="hero__media">
-        <img
-          src="/assets/images/fuzztones-band-hero.png"
-          alt="The Fuzztones band"
-          class="hero__image"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
+        <input
+          type="checkbox"
+          id="hero-slideshow-pause"
+          class="hero__pause-toggle"
+          aria-label="Pause band photo slideshow"
+          autocomplete="off"
         />
+        <label for="hero-slideshow-pause" class="hero__pause-label">
+          <span class="hero__pause-text" aria-hidden="true">Pause</span>
+          <span class="hero__resume-text" aria-hidden="true">Resume</span>
+        </label>
+
+        <div class="hero__slideshow" role="img" aria-label="The Fuzztones band lineups">
+          {heroLineups.map((photo, index) => (
+            <img
+              src={`/assets/images/lineups/${photo}`}
+              alt=""
+              class="hero__image"
+              loading="eager"
+              fetchpriority={index === 0 ? 'high' : 'auto'}
+              decoding="async"
+            />
+          ))}
+        </div>
       </div>
 
       <h1 id="hero-title" class="hero__statement">
