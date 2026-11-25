@@ -71,7 +71,7 @@
   object-position: center;
   background: var(--color-bg);
   opacity: 0;
-  animation: hero-lineup-crossfade 10s linear infinite;
+  animation: hero-lineup-crossfade 12s linear infinite;
 }
 
 /* The original photo determines the desktop slideshow height. */
@@ -95,24 +95,28 @@
   animation-delay: 7.4s;
 }
 
-/* Five photos, two seconds per photo, 0.6-second overlapping fades.
+.hero__slideshow .hero__image:nth-child(6) {
+  animation-delay: 9.4s;
+}
+
+/* Six photos, two seconds per photo, 0.6-second overlapping fades.
    The incoming slide fades over the outgoing slide, avoiding a black flash. */
 @keyframes hero-lineup-crossfade {
   0% {
     opacity: 0;
     z-index: 2;
   }
-  6% {
+  5% {
     opacity: 1;
     z-index: 2;
     animation-timing-function: step-end;
   }
-  20% {
+  16.6667% {
     opacity: 1;
     z-index: 1;
     animation-timing-function: step-end;
   }
-  26%,
+  21.6667%,
   100% {
     opacity: 0;
     z-index: 0;
