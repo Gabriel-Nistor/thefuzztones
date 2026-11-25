@@ -56,19 +56,11 @@ const websiteSchema = {
       </a>
 
       <div class="hero__media">
-        <input
-          type="checkbox"
-          id="hero-slideshow-pause"
-          class="hero__pause-toggle"
-          aria-label="Pause band photo slideshow"
-          autocomplete="off"
-        />
-        <label for="hero-slideshow-pause" class="hero__pause-label">
-          <span class="hero__pause-text" aria-hidden="true">Pause</span>
-          <span class="hero__resume-text" aria-hidden="true">Resume</span>
-        </label>
-
-        <div class="hero__slideshow" role="img" aria-label="The Fuzztones band lineups">
+        <div
+          class="hero__slideshow"
+          role="img"
+          aria-label="The Fuzztones band lineups"
+        >
           {heroLineups.map((photo, index) => (
             <img
               src={`/assets/images/lineups/${photo}`}
