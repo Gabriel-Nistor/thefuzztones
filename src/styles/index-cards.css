@@ -247,33 +247,27 @@
 }
 
 /* =========================================================
-   MUSIC
+   MERCH
    ========================================================= */
 
-.home-card--music {
-  background: radial-gradient(
-    circle at 75% 45%,
-    #231f1b 0%,
-    #11100e 38%,
-    #050505 76%
-  );
-}
-
-.home-card--music::before {
-  inset: 5%;
-
-  background-image: url('/assets/images/cards/music-cover.png');
-  background-size: contain;
+.home-card--merch::before {
+  background-image: url('/assets/images/cards/merch-cover.png');
+  background-size: cover;
   background-position: center;
 }
 
-.home-card--music::after {
+.home-card--merch::after {
   background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.92) 0%,
-    rgba(0, 0, 0, 0.55) 40%,
-    rgba(0, 0, 0, 0.08) 80%
+    to bottom,
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(0, 0, 0, 0.15) 40%,
+    rgba(0, 0, 0, 0.85) 100%
   );
+}
+
+.home-card--merch .home-card__title {
+  max-width: 12ch;
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
 }
 
 /* =========================================================
